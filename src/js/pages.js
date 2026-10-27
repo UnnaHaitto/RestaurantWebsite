@@ -15,7 +15,7 @@ function mainPage() {
       <div id="restaurant">
         <img src="images/restaurant.jpg" alt="Restaurant Image" />
         <h2>Restaurant Name | Company Name</h2>
-        <img src="images/like.jpg" alt="Heart image for like" />
+        <p class="like-button">♡</p>
         <p>Description of the restaurant.</p>
         <p>Location: Address, postal code</p>
         <p>Phone: (123) 456-7890</p>
@@ -23,7 +23,7 @@ function mainPage() {
       <div id="restaurant">
         <img src="images/restaurant.jpg" alt="Restaurant Image" />
         <h2>Restaurant Name | Company Name</h2>
-        <img src="images/like.jpg" alt="Heart image for like" />
+        <p class="like-button">♡</p>
         <p>Description of the restaurant.</p>
         <p>Location: Address, postal code</p>
         <p>Phone: (123) 456-7890</p>
@@ -31,7 +31,7 @@ function mainPage() {
       <div id="restaurant">
         <img src="images/restaurant.jpg" alt="Restaurant Image" />
         <h2>Restaurant Name | Company Name</h2>
-        <img src="images/like.jpg" alt="Heart image for like" />
+        <p class="like-button">♡</p>
         <p>Description of the restaurant.</p>
         <p>Location: Address, postal code</p>
         <p>Phone: (123) 456-7890</p>
@@ -39,7 +39,7 @@ function mainPage() {
       <div id="restaurant">
         <img src="images/restaurant.jpg" alt="Restaurant Image" />
         <h2>Restaurant Name | Company Name</h2>
-        <img src="images/like.jpg" alt="Heart image for like" />
+        <p class="like-button">♡</p>
         <p>Description of the restaurant.</p>
         <p>Location: Address, postal code</p>
         <p>Phone: (123) 456-7890</p>
@@ -47,7 +47,7 @@ function mainPage() {
       <div id="restaurant">
         <img src="images/restaurant.jpg" alt="Restaurant Image" />
         <h2>Restaurant Name | Company Name</h2>
-        <img src="images/like.jpg" alt="Heart image for like" />
+        <p class="like-button">♡</p>
         <p>Description of the restaurant.</p>
         <p>Location: Address, postal code</p>
         <p>Phone: (123) 456-7890</p>
