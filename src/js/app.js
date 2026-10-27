@@ -19,3 +19,18 @@ function likeButtonListener() {
     });
   });
 }
+
+function menuLinkListener() {
+  const dailyMenuLink = document.querySelector('.menu-link-daily');
+  const weeklyMenuLink = document.querySelector('.menu-link-weekly');
+
+  dailyMenuLink.addEventListener('click', function () {
+    document.getElementById('mainContainer').innerHTML =
+      header() + menuPage() + footer();
+  });
+
+  weeklyMenuLink.addEventListener('click', function () {
+    document.getElementById('mainContainer').innerHTML =
+      header() + menuPage() + footer();
+  });
+}
