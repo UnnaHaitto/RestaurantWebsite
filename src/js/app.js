@@ -35,10 +35,10 @@ document.addEventListener('click', function (event) {
 
   if (event.target.closest('.like-button')) {
     const button = event.target;
-    if (button.textContent === '♡') {
-      button.textContent = '♥'; // Change to filled heart
+    if (button.innerText == '♡') {
+      button.innerText = '♥';
     } else {
-      button.textContent = '♡'; // Change back to empty heart
+      button.innerText = '♡';
     }
   }
 });
