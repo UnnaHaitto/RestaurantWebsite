@@ -23,14 +23,54 @@ function mainPage() {
 `;
 }
 
-function menuPage() {
+function menuOfTheDay() {
   return `<main>
-      <h2>Menu</h2>
-      <ul>
-        <li>Dish 1 - $10</li>
-        <li>Dish 2 - $12</li>
-        <li>Dish 3 - $15</li>
-      </ul>
+      <h1>Menu of the Day | Restaurant Name </h1>
+      <p>Item 1: Description, Price</p>
+      <p>Item 2: Description, Price</p>
+      <p>Item 3: Description, Price</p>
+      <p>Item 4: Description, Price</p>
+      <p>Item 5: Description, Price</p>
+    </main>`;
+}
+
+function menuPageWeekly() {
+  return (
+    `<nav>
+      <h1>Menu | Restaurant Name </h1>
+      <a class="menu-link-day" href="` +
+    menuOfTheDay() +
+    `">Monday</a>
+      <a class="menu-link-day" href="` +
+    menuOfTheDay() +
+    `">Tuesday</a>
+      <a class="menu-link-day" href="` +
+    menuOfTheDay() +
+    `">Wednesday</a>
+      <a class="menu-link-day" href="` +
+    menuOfTheDay() +
+    `">Thursday</a>
+      <a class="menu-link-day" href="` +
+    menuOfTheDay() +
+    `">Friday</a>
+      <a class="menu-link-day" href="` +
+    menuOfTheDay() +
+    `">Saturday</a>
+      <a class="menu-link-day" href="` +
+    menuOfTheDay() +
+    `">Sunday</a>
+    </nav>`
+  );
+}
+
+function menuPageDaily() {
+  return `<main>
+      <h1>Menu | Restaurant Name </h1>
+      <p>Item 1: Description, Price</p>
+      <p>Item 2: Description, Price</p>
+      <p>Item 3: Description, Price</p>
+      <p>Item 4: Description, Price</p>
+      <p>Item 5: Description, Price</p>
     </main>`;
 }
 
@@ -39,9 +79,7 @@ function header() {
       <h1>Restaurant Website</h1>
       <nav>
         <ul>
-          <li><a href="#">Home</a></li>
-          <li><a href="#">Menu</a></li>
-          <li><a href="#">Contact</a></li>
+          <li><p class="nav-link">Home</p></li>
         </ul>
       </nav>
     </header>`;
