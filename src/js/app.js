@@ -1,36 +1,44 @@
 document.addEventListener('DOMContentLoaded', function () {
-  document.getElementById('mainContainer').innerHTML =
-    header() + mainPage() + footer();
-  likeButtonListener();
+  loadMainPage();
 });
 
-function likeButtonListener() {
-  const likeButtons = document.querySelectorAll('.like-button');
-
-  likeButtons.forEach((button) => {
-    button.addEventListener('click', function (event) {
-      if (event.target.classList.contains('like-button')) {
-        if (button.textContent === '♡') {
-          button.textContent = '♥'; // Change to filled heart
-        } else {
-          button.textContent = '♡'; // Change back to empty heart
-        }
-      }
-    });
-  });
+function loadMainPage() {
+  document.getElementById('mainContainer').innerHTML =
+    header() + mainPage() + footer();
 }
 
-function menuLinkListener() {
-  const dailyMenuLink = document.querySelector('.menu-link-daily');
-  const weeklyMenuLink = document.querySelector('.menu-link-weekly');
-
-  dailyMenuLink.addEventListener('click', function () {
-    document.getElementById('mainContainer').innerHTML =
-      header() + menuPage() + footer();
-  });
-
-  weeklyMenuLink.addEventListener('click', function () {
-    document.getElementById('mainContainer').innerHTML =
-      header() + menuPage() + footer();
-  });
+function loadDailyMenuPage() {
+  document.getElementById('mainContainer').innerHTML =
+    header() + menuPageDaily() + footer();
 }
+
+function loadWeeklyMenuPage() {
+  document.getElementById('mainContainer').innerHTML =
+    header() + menuPageWeekly() + footer();
+}
+
+document.addEventListener('click', function (event) {
+  if (event.target.closest('.nav-link')) {
+    loadMainPage();
+    return;
+  }
+
+  if (event.target.closest('.menu-link-daily')) {
+    loadDailyMenuPage();
+    return;
+  }
+
+  if (event.target.closest('.menu-link-weekly')) {
+    loadWeeklyMenuPage();
+    return;
+  }
+
+  if (event.target.closest('.like-button')) {
+    const button = event.target;
+    if (button.textContent === '♡') {
+      button.textContent = '♥'; // Change to filled heart
+    } else {
+      button.textContent = '♡'; // Change back to empty heart
+    }
+  }
+});
