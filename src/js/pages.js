@@ -16,96 +16,22 @@ function mainPage() {
         <p>Description of the restaurant.</p>
         <p>Location: Address, postal code</p>
         <p>Phone: (123) 456-7890</p>
-        <a href="#">Daily Menu</a>
-        <a href="#">Weekly Menu</a>
-      </div>
-      <div id="restaurant">
-        <img src="images/restaurant.jpeg" alt="Restaurant Image" />
-        <div class="container">
-        <div class="restaurant-info">
-        <h2>Restaurant Name</h2>
-        <p>Company Name</p>
-        </div>
-        <div class="like-button-container">
-        <p class="like-button">♡</p>
-        </div>
-        </div>
-        <p>Description of the restaurant.</p>
-        <p>Location: Address, postal code</p>
-        <p>Phone: (123) 456-7890</p>
-        <a href="#">Daily Menu</a>
-        <a href="#">Weekly Menu</a>
-      </div>
-      <div id="restaurant">
-        <img src="images/restaurant.jpeg" alt="Restaurant Image" />
-        <div class="container">
-        <div class="restaurant-info">
-        <h2>Restaurant Name</h2>
-        <p>Company Name</p>
-        </div>
-        <div class="like-button-container">
-        <p class="like-button">♡</p>
-        </div>
-        </div>
-        <p>Description of the restaurant.</p>
-        <p>Location: Address, postal code</p>
-        <p>Phone: (123) 456-7890</p>
-        <a href="#">Daily Menu</a>
-        <a href="#">Weekly Menu</a>
-      </div>
-      <div id="restaurant">
-        <img src="images/restaurant.jpeg" alt="Restaurant Image" />
-        <div class="container">
-        <div class="restaurant-info">
-        <h2>Restaurant Name</h2>
-        <p>Company Name</p>
-        </div>
-        <div class="like-button-container">
-        <p class="like-button">♡</p>
-        </div>
-        </div>
-        <p>Description of the restaurant.</p>
-        <p>Location: Address, postal code</p>
-        <p>Phone: (123) 456-7890</p>
-        <a href="#">Daily Menu</a>
-        <a href="#">Weekly Menu</a>
-      </div>
-      <div id="restaurant">
-        <img src="images/restaurant.jpeg" alt="Restaurant Image" />
-        <div class="container">
-        <div class="restaurant-info">
-        <h2>Restaurant Name</h2>
-        <p>Company Name</p>
-        </div>
-        <div class="like-button-container">
-        <p class="like-button">♡</p>
-        </div>
-        </div>
-        <p>Description of the restaurant.</p>
-        <p>Location: Address, postal code</p>
-        <p>Phone: (123) 456-7890</p>
-        <a href="#">Daily Menu</a>
-        <a href="#">Weekly Menu</a>
-      </div>
-      <div id="restaurant">
-        <img src="images/restaurant.jpeg" alt="Restaurant Image" />
-        <div class="container">
-        <div class="restaurant-info">
-        <h2>Restaurant Name</h2>
-        <p>Company Name</p>
-        </div>
-        <div class="like-button-container">
-        <p class="like-button">♡</p>
-        </div>
-        </div>
-        <p>Description of the restaurant.</p>
-        <p>Location: Address, postal code</p>
-        <p>Phone: (123) 456-7890</p>
-        <a href="#">Daily Menu</a>
-        <a href="#">Weekly Menu</a>
+        <p class="menu-link-daily">Daily Menu</p>
+        <p class="menu-link-weekly">Weekly Menu</p>
       </div>
     </main>
 `;
+}
+
+function menuPage() {
+  return `<main>
+      <h2>Menu</h2>
+      <ul>
+        <li>Dish 1 - $10</li>
+        <li>Dish 2 - $12</li>
+        <li>Dish 3 - $15</li>
+      </ul>
+    </main>`;
 }
 
 function header() {
