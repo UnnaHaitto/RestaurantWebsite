@@ -1,5 +1,6 @@
 document.addEventListener('DOMContentLoaded', function () {
-  document.getElementById('mainContainer').innerHTML = mainPage();
+  document.getElementById('mainContainer').innerHTML =
+    header() + mainPage() + footer();
   likeButtonListener();
 });
 
