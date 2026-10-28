@@ -1,85 +1,53 @@
 'use strict';
 function mainPage() {
+  //List all the restaurant elements here in the future
   return `<main>
-      <!-- List of all the restaurant elements will be added here in the future. -->
+      <h1>Ravintolat</h1>
       <div id="restaurant">
-        <img src="images/restaurant.jpeg" alt="Restaurant Image" />
+        <img src="images/restaurant.jpeg" alt="Kuva ravintolasta" />
         <div class="container">
         <div class="restaurant-info">
-        <h2>Restaurant Name</h2>
-        <p>Company Name</p>
+        <h2>Ravintolan nimi</h2>
+        <p>Yrityksen nimi</p>
         </div>
         <div class="like-button-container">
         <p class="like-button">♡</p>
         </div>
         </div>
-        <p>Description of the restaurant.</p>
-        <p>Location: Address, postal code</p>
-        <p>Phone: (123) 456-7890</p>
-        <p class="menu-link-daily">Daily Menu</p>
-        <p class="menu-link-weekly">Weekly Menu</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        <p>Osoite: osoite, postiosoite</p>
+        <p>Puhelinnumero: +358 11 111</p>
+        <p class="menu-link-daily">Päivän menu</p>
+        <p class="menu-link-weekly">Viikon menu</p>
       </div>
     </main>
 `;
 }
 
-function menuOfTheDay() {
-  return `<main>
-      <h1>Menu of the Day | Restaurant Name </h1>
-      <p>Item 1: Description, Price</p>
-      <p>Item 2: Description, Price</p>
-      <p>Item 3: Description, Price</p>
-      <p>Item 4: Description, Price</p>
-      <p>Item 5: Description, Price</p>
-    </main>`;
-}
-
 function menuPageWeekly() {
   return (
-    `<nav>
-      <h1>Menu | Restaurant Name </h1>
-      <a class="menu-link-day" href="` +
-    menuOfTheDay() +
-    `">Monday</a>
-      <a class="menu-link-day" href="` +
-    menuOfTheDay() +
-    `">Tuesday</a>
-      <a class="menu-link-day" href="` +
-    menuOfTheDay() +
-    `">Wednesday</a>
-      <a class="menu-link-day" href="` +
-    menuOfTheDay() +
-    `">Thursday</a>
-      <a class="menu-link-day" href="` +
-    menuOfTheDay() +
-    `">Friday</a>
-      <a class="menu-link-day" href="` +
-    menuOfTheDay() +
-    `">Saturday</a>
-      <a class="menu-link-day" href="` +
-    menuOfTheDay() +
-    `">Sunday</a>
-    </nav>`
+    // FETCH HERE THE DAYS THAT THE MENU OIS
+    `<h2>Viikon menu | Ravintolan nimi</h2>`
   );
 }
 
 function menuPageDaily() {
   return `<main>
-      <h1>Menu | Restaurant Name </h1>
-      <p>Item 1: Description, Price</p>
-      <p>Item 2: Description, Price</p>
-      <p>Item 3: Description, Price</p>
-      <p>Item 4: Description, Price</p>
-      <p>Item 5: Description, Price</p>
+      <h1>Päivän menu | Ravintolan nimi </h1>
+      <p>Ruokalaji 1: Kuvaus, Hinta</p>
+      <p>Ruokalaji 2: Kuvaus, Hinta</p>
+      <p>Ruokalaji 3: Kuvaus, Hinta</p>
+      <p>Ruokalaji 4: Kuvaus, Hinta</p>
+      <p>Ruokalaji 5: Kuvaus, Hinta</p>
     </main>`;
 }
 
 function header() {
   return `<header>
-      <h1>Restaurant Website</h1>
+      <h1>Ravintola listaaja</h1>
       <nav>
         <ul>
-          <li><p class="nav-link">Home</p></li>
+          <li><p class="nav-link">Koti</p></li>
         </ul>
       </nav>
     </header>`;
@@ -87,6 +55,6 @@ function header() {
 
 function footer() {
   return `<footer>
-      <p>&copy; 2026 Restaurant Website. All rights reserved.</p>
+      <p>&copy; 2026 Ravintola Listaaja. Kaikki oikeudet pidätetään.</p>
     </footer>`;
 }
