@@ -3,17 +3,16 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script src="js/pages.js" defer></script>
-    <script src="js/app.js" defer></script>
-    <link rel="stylesheet" href="css/style.css" />
-    <title>RestaurantWebsite</title>
+    <script src="../js/app.js" defer></script>
+    <link rel="stylesheet" href="../css/style.css" />
+    <title>Main Page</title>
   </head>
   <body>
     <header>
       <h1>Ravintola listaaja</h1>
       <nav>
         <ul>
-          <li><a href="main.html">Koti</a></li>
+          <li><a href="../main.html">Koti</a></li>
         </ul>
       </nav>
     </header>
@@ -21,7 +20,7 @@
     <main>
       <h1>Ravintolat</h1>
       <div id="restaurant">
-        <img src="images/restaurant.jpeg" alt="Kuva ravintolasta" />
+        <img src="../images/restaurant.jpeg" alt="Kuva ravintolasta" />
         <div class="container">
           <div class="restaurant-info">
             <h2>Ravintolan nimi</h2>
@@ -42,8 +41,8 @@
         </p>
         <p>Osoite: osoite, postiosoite</p>
         <p>Puhelinnumero: +358 11 111</p>
-        <p class="menu-link-daily">Päivän menu</p>
-        <p class="menu-link-weekly">Viikon menu</p>
+        <a href="dailyMenu.html">Päivän menu</a>
+        <a href="weeklyMenu.html">Viikon menu</a>
       </div>
     </main>
 
