@@ -1,44 +1,11 @@
-document.addEventListener('DOMContentLoaded', function () {
-  loadMainPage();
-});
+const likeButtons = document.querySelectorAll('.like-button');
 
-function loadMainPage() {
-  document.getElementById('mainContainer').innerHTML =
-    header() + mainPage() + footer();
-}
-
-function loadDailyMenuPage() {
-  document.getElementById('mainContainer').innerHTML =
-    header() + menuPageDaily() + footer();
-}
-
-function loadWeeklyMenuPage() {
-  document.getElementById('mainContainer').innerHTML =
-    header() + menuPageWeekly() + footer();
-}
-
-document.addEventListener('click', function (event) {
-  if (event.target.closest('.nav-link')) {
-    loadMainPage();
-    return;
-  }
-
-  if (event.target.closest('.menu-link-daily')) {
-    loadDailyMenuPage();
-    return;
-  }
-
-  if (event.target.closest('.menu-link-weekly')) {
-    loadWeeklyMenuPage();
-    return;
-  }
-
-  if (event.target.closest('.like-button')) {
-    const button = event.target;
+likeButtons.forEach(function (button) {
+  button.addEventListener('click', function (evt) {
     if (button.innerText == '♡') {
       button.innerText = '♥';
     } else {
       button.innerText = '♡';
     }
-  }
+  });
 });
