@@ -7,3 +7,11 @@
   height: 50dvh;
   width: 100dvw;
 }
+
+section {
+  display: none;
+}
+
+section:target {
+  display: block;
+}

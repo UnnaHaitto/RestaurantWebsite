@@ -10,7 +10,39 @@
     <div id="user-page">
       <h1>Käyttäjäprofiili</h1>
 
-      <button id="logout-button">Kirjaudu ulos</button>
+      <div class="sidebar">
+        <h2>Valikko</h2>
+        <ul>
+          <li><a href="#user-info">Muuta tietoja</a></li>
+          <li><a href="#favourite-foods">Lempi ruuat</a></li>
+          <li><a id="logout-link">Kirjaudu ulos</a></li>
+        </ul>
+      </div>
+
+      <div class="content">
+        <section id="user-info">
+          <h2>Muuta tietoja</h2>
+          <form id="user-info-form">
+            <label for="username">Käyttäjänimi:</label>
+            <input type="text" id="username" name="username" required />
+
+            <label for="password">Salasana:</label>
+            <input type="password" id="password" name="password" required />
+
+            <label for="description">Kuvaus:</label>
+            <textarea id="description" name="description"></textarea>
+
+            <button type="submit">Tallenna muutokset</button>
+          </form>
+        </section>
+
+        <section id="favourite-foods">
+          <h2>Lempi ruuat</h2>
+          <ul id="favourite-foods-list">
+            <!-- Lempi ruuat listataan tähän -->
+          </ul>
+        </section>
+      </div>
     </div>
   </body>
 </html>
