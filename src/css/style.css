@@ -13,8 +13,15 @@
 }
 
 #map {
-  height: 50dvh;
-  width: 100dvw;
+  height: 80dvh;
+  width: 70dvw;
+}
+
+#map-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
 }
 
 section {
