@@ -2,3 +2,8 @@
   color: red;
   cursor: pointer;
 }
+
+#map {
+  height: 50dvh;
+  width: 100dvw;
+}
