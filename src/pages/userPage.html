@@ -4,15 +4,21 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="../css/style.css" />
+    <script src="../js/user.js" defer></script>
     <title>User Page</title>
   </head>
   <body>
     <div id="user-page">
       <h1>Käyttäjäprofiili</h1>
 
+      <div class="sidebar-profile">
+        <img id="image" src="../images/avatar.png" alt="User Icon" />
+        <h3 id="username">Käyttäjänimi</h3>
+      </div>
       <div class="sidebar">
         <h2>Valikko</h2>
         <ul>
+          <li><a href="#image_section">Muuta profiilikuva</a></li>
           <li><a href="#user-info">Muuta tietoja</a></li>
           <li><a href="#favourite-foods">Lempi ruuat</a></li>
           <li><a id="logout-link">Kirjaudu ulos</a></li>
@@ -20,6 +26,10 @@
       </div>
 
       <div class="content">
+        <section id="image_section">
+          <input type="file" id="input" accept="image/*" />
+        </section>
+
         <section id="user-info">
           <h2>Muuta tietoja</h2>
           <form id="user-info-form">
