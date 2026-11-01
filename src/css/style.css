@@ -46,6 +46,13 @@ main h1 {
   color: #047c58;
 }
 
+h1 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #047c58;
+  padding-top: 40px;
+}
+
 footer {
   background-color: #047c58;
   color: white;
@@ -89,4 +96,18 @@ header {
 
 #login-button {
   margin-top: 10px;
+}
+
+.food-container {
+  padding-bottom: 20px;
+}
+
+.food-data-container {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 5px;
+}
+
+.food-data-container p {
+  margin-right: 10px;
 }
