@@ -70,3 +70,21 @@ header {
   text-decoration: none;
   margin-left: 15px;
 }
+
+#login-container {
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  width: 300px;
+  background-color: #fffefe;
+  padding: 20px;
+  border: solid 2px black;
+}
+
+#login-container label {
+  padding: 5px;
+}
+
+#login-button {
+  margin-top: 10px;
+}
