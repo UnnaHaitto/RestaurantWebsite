@@ -122,3 +122,17 @@ header {
   clip-path: circle(50%);
   width: 10%;
 }
+
+#daily-menu-container {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 20px;
+}
+
+#weekly-menu-container {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 20px;
+}
