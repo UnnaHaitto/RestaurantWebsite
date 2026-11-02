@@ -124,13 +124,36 @@ header {
   width: 50%;
 }
 
+#userPage-container {
+  display: flex;
+}
+
 .sidebar-container {
   border-right: solid 1px black;
-  width: 20%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  flex: 3;
 }
 
 .sidebar-profile {
   border-bottom: solid 1px black;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.sidebar ul {
+  list-style: none;
+}
+
+.content {
+  flex: 7;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  margin: auto;
 }
 
 #daily-menu-container {
