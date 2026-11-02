@@ -120,6 +120,7 @@ header {
 
 #image-container {
   clip-path: circle(50%);
+  aspect-ratio: 1/1;
   width: 10%;
 }
 
