@@ -23,79 +23,81 @@
     <div id="user-page">
       <h1 id="user-text">Käyttäjäprofiili</h1>
 
-      <div class="sidebar-container">
-        <div class="sidebar-profile">
-          <div id="image-container">
-            <img id="image" src="../images/avatar.png" alt="User Icon" />
-          </div>
-          <h3 id="username">Käyttäjänimi</h3>
-        </div>
-        <div class="sidebar">
-          <h2>Valikko</h2>
-          <ul>
-            <li><a href="#image_section">Muuta profiilikuva</a></li>
-            <li><a href="#user-info">Muuta tietoja</a></li>
-            <li><a href="#favourite-foods">Lempi ruuat</a></li>
-            <li><a id="logout-link">Kirjaudu ulos</a></li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="content">
-        <section id="image_section">
-          <input type="file" id="input" accept="image/*" />
-        </section>
-
-        <section id="user-info">
-          <h2>Muuta tietoja</h2>
-          <form id="user-info-form">
-            <label for="username">Käyttäjänimi:</label>
-            <input type="text" id="username" name="username" required />
-
-            <label for="password">Salasana:</label>
-            <input type="password" id="password" name="password" required />
-
-            <button type="submit">Tallenna muutokset</button>
-          </form>
-        </section>
-
-        <section id="favourite-foods">
-          <h2>Lempi ruuat</h2>
-
-          <div class="restaurants">
-            <img src="../images/restaurant.jpeg" alt="Kuva ravintolasta" />
-            <div class="container">
-              <div class="restaurant-info">
-                <h2>Ravintolan nimi</h2>
-                <p>Yrityksen nimi</p>
-              </div>
-              <div class="like-button-container">
-                <p class="like-button">♡</p>
-              </div>
+      <div id="userPage-container">
+        <div class="sidebar-container">
+          <div class="sidebar-profile">
+            <div id="image-container">
+              <img id="image" src="../images/avatar.png" alt="User Icon" />
             </div>
-            <p>Osoite: osoite, postiosoite</p>
-            <p>Puhelinnumero: +358 11 111</p>
-            <a href="dailyMenu.html">Päivän menu</a>
-            <a href="weeklyMenu.html">Viikon menu</a>
+            <h3 id="username">Käyttäjänimi</h3>
           </div>
+          <div class="sidebar">
+            <h2>Valikko</h2>
+            <ul>
+              <li><a href="#image_section">Muuta profiilikuva</a></li>
+              <li><a href="#user-info">Muuta tietoja</a></li>
+              <li><a href="#favourite-foods">Lempi ruuat</a></li>
+              <li><a id="logout-link">Kirjaudu ulos</a></li>
+            </ul>
+          </div>
+        </div>
 
-          <div class="restaurants">
-            <img src="../images/restaurant.jpeg" alt="Kuva ravintolasta" />
-            <div class="container">
-              <div class="restaurant-info">
-                <h2>Ravintolan nimi</h2>
-                <p>Yrityksen nimi</p>
+        <div class="content">
+          <section id="image_section">
+            <input type="file" id="input" accept="image/*" />
+          </section>
+
+          <section id="user-info">
+            <h2>Muuta tietoja</h2>
+            <form id="user-info-form">
+              <label for="username">Käyttäjänimi:</label>
+              <input type="text" id="username" name="username" required />
+
+              <label for="password">Salasana:</label>
+              <input type="password" id="password" name="password" required />
+
+              <button type="submit">Tallenna muutokset</button>
+            </form>
+          </section>
+
+          <section id="favourite-foods">
+            <h2>Lempi ruuat</h2>
+
+            <div class="restaurants">
+              <img src="../images/restaurant.jpeg" alt="Kuva ravintolasta" />
+              <div class="container">
+                <div class="restaurant-info">
+                  <h2>Ravintolan nimi</h2>
+                  <p>Yrityksen nimi</p>
+                </div>
+                <div class="like-button-container">
+                  <p class="like-button">♡</p>
+                </div>
               </div>
-              <div class="like-button-container">
-                <p class="like-button">♡</p>
-              </div>
+              <p>Osoite: osoite, postiosoite</p>
+              <p>Puhelinnumero: +358 11 111</p>
+              <a href="dailyMenu.html">Päivän menu</a>
+              <a href="weeklyMenu.html">Viikon menu</a>
             </div>
-            <p>Osoite: osoite, postiosoite</p>
-            <p>Puhelinnumero: +358 11 111</p>
-            <a href="dailyMenu.html">Päivän menu</a>
-            <a href="weeklyMenu.html">Viikon menu</a>
-          </div>
-        </section>
+
+            <div class="restaurants">
+              <img src="../images/restaurant.jpeg" alt="Kuva ravintolasta" />
+              <div class="container">
+                <div class="restaurant-info">
+                  <h2>Ravintolan nimi</h2>
+                  <p>Yrityksen nimi</p>
+                </div>
+                <div class="like-button-container">
+                  <p class="like-button">♡</p>
+                </div>
+              </div>
+              <p>Osoite: osoite, postiosoite</p>
+              <p>Puhelinnumero: +358 11 111</p>
+              <a href="dailyMenu.html">Päivän menu</a>
+              <a href="weeklyMenu.html">Viikon menu</a>
+            </div>
+          </section>
+        </div>
       </div>
     </div>
 
