@@ -136,3 +136,45 @@ header {
   flex-direction: column;
   margin-top: 20px;
 }
+
+.menu {
+  display: none;
+}
+
+.show-menu {
+  display: block;
+}
+
+#day-container {
+  margin-bottom: 20px;
+}
+
+#day-container a {
+  text-decoration: none;
+  color: #047c58;
+  margin-right: 10px;
+  border-right: solid 1px #047c58;
+  padding-right: 10px;
+}
+
+#day-container a:last-child {
+  border-right: none;
+  padding-right: 0;
+}
+
+.restaurant-menu-info {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.restaurant-menu-info h1:first-child {
+  padding-right: 20px;
+  border-right: solid 1px #047c58;
+}
+
+.restaurant-menu-info h1:last-child {
+  padding-left: 20px;
+}
