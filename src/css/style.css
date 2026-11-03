@@ -184,10 +184,10 @@ header {
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  margin: auto;
 }
 
 #favourite-foods {
+  height: 100%;
   width: 100%;
 }
 
@@ -206,6 +206,7 @@ header {
   padding: 20px;
   width: 100%;
   background-color: #f4f4f4;
+  height: 100%;
 }
 
 #input {
