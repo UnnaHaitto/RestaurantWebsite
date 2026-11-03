@@ -356,7 +356,7 @@ header {
   padding-left: 20px;
 }
 
-@media screen and (max-width: 2500px) {
+@media screen and (max-width: 1250px) {
   .sidebar-profile {
     display: inline-block;
   }
@@ -371,5 +371,16 @@ header {
 
   #user-text {
     font-size: 25px;
+  }
+}
+
+@media screen and (max-width: 850px) {
+  #user-favourite-food-container {
+    display: inline-block;
+  }
+
+  .restaurants {
+    margin-top: 20px;
+    width: 100%;
   }
 }
