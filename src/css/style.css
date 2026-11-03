@@ -372,6 +372,27 @@ header {
   #user-text {
     font-size: 25px;
   }
+
+  #login-container {
+    width: 30%;
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  #login-container {
+    width: 50%;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  #map-container {
+    width: 100%;
+  }
+
+  #map {
+    height: 100dvh;
+    width: 100dvh;
+  }
 }
 
 @media screen and (max-width: 850px) {
@@ -383,4 +404,40 @@ header {
     margin-top: 20px;
     width: 100%;
   }
+
+  .pagination {
+    font-size: 20px;
+  }
+
+  header h1 {
+    text-align: center;
+  }
+
+  .header-nav {
+    display: flex;
+    justify-content: center;
+  }
+
+  .header-nav ul {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .header-nav ul li {
+    font-size: 25px;
+  }
+
+  #login-container {
+    width: 90%;
+  }
 }
+
+/*viikon menun päiväykset 650px kohdalla burgeri valikoksi
+
+ravintola kartta 900 px kohdalla width 100%
+
+kirjautumissivu
+
+hamburgerivalikko
+
+user sivun sidebar ja main content*/
