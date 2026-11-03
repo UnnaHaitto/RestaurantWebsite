@@ -202,6 +202,12 @@ header {
   gap: 40px;
 }
 
+#user-favourite-foods-container {
+  padding: 20px;
+  width: 100%;
+  background-color: #f4f4f4;
+}
+
 #input {
   font-size: 15px;
 }
