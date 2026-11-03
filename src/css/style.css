@@ -202,6 +202,10 @@ header {
   gap: 40px;
 }
 
+#input {
+  font-size: 15px;
+}
+
 #user-info-form {
   display: flex;
   flex-direction: column;
