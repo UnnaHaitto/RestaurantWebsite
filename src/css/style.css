@@ -354,3 +354,21 @@ header {
 .restaurant-info-container p:last-child {
   padding-left: 20px;
 }
+
+@media screen and (max-width: 2500px) {
+  .sidebar-profile {
+    display: inline-block;
+  }
+
+  .sidebar-profile h3 {
+    text-align: center;
+  }
+
+  #image-container {
+    width: 100%;
+  }
+
+  #user-text {
+    font-size: 25px;
+  }
+}
