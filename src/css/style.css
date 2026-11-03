@@ -191,7 +191,7 @@ header {
   width: 100%;
 }
 
-#favourite-foods h2 {
+#favourite-food-h2 {
   text-align: center;
   padding: 20px;
 }
@@ -210,10 +210,12 @@ header {
 #user-info-form label {
   margin-bottom: 10px;
   margin-top: 10px;
+  font-size: 18px;
 }
 
 #user-info-form button {
   margin-top: 10px;
+  font-size: 18px;
 }
 
 #daily-menu-container {
@@ -301,6 +303,7 @@ header {
 .container {
   display: flex;
   justify-content: space-between;
+  padding-top: 10px;
 }
 
 .restaurant-container {
@@ -320,4 +323,23 @@ header {
 
 .like-button {
   font-size: 30px;
+}
+
+.restaurant-menu-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.restaurant-info-container {
+  display: flex;
+  padding-top: 30px;
+}
+
+.restaurant-info-container p:first-child {
+  border-right: solid 1px #047c58;
+  padding-right: 20px;
+}
+
+.restaurant-info-container p:last-child {
+  padding-left: 20px;
 }
