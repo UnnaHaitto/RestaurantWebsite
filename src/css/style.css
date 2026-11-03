@@ -181,6 +181,20 @@ header {
   margin: auto;
 }
 
+#user-info-form {
+  display: flex;
+  flex-direction: column;
+}
+
+#user-info-form label {
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
+
+#user-info-form button {
+  margin-top: 10px;
+}
+
 #daily-menu-container {
   display: flex;
   align-items: center;
