@@ -187,6 +187,21 @@ header {
   margin: auto;
 }
 
+#favourite-foods {
+  width: 100%;
+}
+
+#favourite-foods h2 {
+  text-align: center;
+  padding: 20px;
+}
+
+#user-favourite-food-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
+}
+
 #user-info-form {
   display: flex;
   flex-direction: column;
@@ -270,4 +285,39 @@ header {
 
 .active {
   font-weight: bold;
+}
+
+.restaurants {
+  width: calc(50% - 20px);
+  background-color: white;
+  padding: 20px;
+}
+
+.restarants img {
+  width: 100%;
+  object-fit: cover;
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.restaurant-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
+}
+
+.food-image-container {
+  width: 100%;
+}
+
+.food-image-container img {
+  width: 100%;
+  object-fit: cover;
+}
+
+.like-button {
+  font-size: 30px;
 }
