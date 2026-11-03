@@ -94,8 +94,14 @@ header {
   padding: 5px;
 }
 
+#login-container input {
+  font-size: 18px;
+  padding: 1px;
+}
+
 #login-button {
   margin-top: 10px;
+  font-size: 18px;
 }
 
 .food-container {
@@ -249,4 +255,19 @@ header {
 
 .restaurant-menu-info h1:last-child {
   padding-left: 20px;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+}
+
+.pagination a {
+  margin: 10px;
+  text-decoration: none;
+  color: #047c58;
+}
+
+.active {
+  font-weight: bold;
 }
