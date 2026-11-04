@@ -36,11 +36,27 @@
           </div>
           <div class="sidebar">
             <ul>
-              <li><h2>Muuta tietoja</h2></li>
-              <li><a href="#image-section">Muuta profiilikuva</a></li>
-              <li><a href="#user-info">Muuta tietoja</a></li>
-              <li><h2>Lempparit</h2></li>
-              <li><a href="#favourite-foods">Lempi ruuat</a></li>
+              <li>
+                <input type="checkbox" id="settings-toggle" />
+                <label for="settings-toggle">
+                  <h2>Muuta tietoja</h2>
+                </label>
+              </li>
+              <li class="settings-item">
+                <a href="#image-section">Muuta profiilikuva</a>
+              </li>
+              <li class="settings-item">
+                <a href="#user-info">Muuta tietoja</a>
+              </li>
+              <li>
+                <input type="checkbox" id="favourites-toggle" />
+                <label for="favourites-toggle">
+                  <h2>Lempparit</h2>
+                </label>
+              </li>
+              <li class="favourites-item">
+                <a href="#favourite-foods">Lempi ruuat</a>
+              </li>
               <li><a id="logout-link">[➜ Kirjaudu ulos</a></li>
             </ul>
           </div>
