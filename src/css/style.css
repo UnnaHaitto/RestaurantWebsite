@@ -356,6 +356,10 @@ header {
   padding-left: 20px;
 }
 
+.burger-menu {
+  display: none;
+}
+
 @media screen and (max-width: 1250px) {
   .sidebar-profile {
     display: inline-block;
@@ -416,6 +420,7 @@ header {
   .header-nav {
     display: flex;
     justify-content: center;
+    flex-direction: column;
   }
 
   .header-nav ul {
@@ -429,6 +434,26 @@ header {
 
   #login-container {
     width: 90%;
+  }
+
+  .burger-menu {
+    display: block;
+    text-align: center;
+    font-size: 30px;
+  }
+
+  #menu {
+    opacity: 0;
+    position: absolute;
+  }
+
+  .header-nav ul {
+    padding-top: 10px;
+    display: none;
+  }
+
+  .header-nav:has(#menu:checked) ul {
+    display: block;
   }
 }
 
