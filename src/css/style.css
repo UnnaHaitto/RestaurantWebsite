@@ -253,6 +253,15 @@ header {
   margin-top: 20px;
 }
 
+#weekly-menu-container label {
+  display: none;
+}
+
+#day-menu-toggle {
+  opacity: 0;
+  position: absolute;
+}
+
 .menu {
   display: none;
 }
@@ -414,6 +423,10 @@ header {
 }
 
 @media screen and (max-width: 850px) {
+  p {
+    font-size: 20px;
+  }
+
   #user-favourite-food-container {
     display: inline-block;
   }
@@ -475,9 +488,17 @@ header {
     flex: initial;
   }
 
+  .sidebar-container li {
+    font-size: 20px;
+  }
+
   .sidebar-profile {
     display: flex;
     flex-direction: column;
+  }
+
+  #username {
+    font-size: 30px;
   }
 
   #image-container {
@@ -532,6 +553,39 @@ header {
   .settings-item,
   .favourites-item {
     display: none;
+  }
+
+  .restaurant-menu-container a {
+    font-size: 20px;
+    padding-top: 10px;
+  }
+}
+
+@media screen and (max-width: 650px) {
+  #day-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: fit-content;
+    display: none;
+  }
+
+  #day-container a {
+    border: none;
+    font-size: 20px;
+  }
+
+  .menu {
+    padding-top: 20px;
+  }
+
+  #weekly-menu-container label {
+    display: block;
+    color: #047c58;
+  }
+
+  #day-menu-toggle:checked ~ #day-container {
+    display: flex;
   }
 }
 
