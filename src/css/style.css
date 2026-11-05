@@ -501,6 +501,14 @@ header {
     font-size: 30px;
   }
 
+  #password {
+    font-size: 30px;
+  }
+
+  #user-info-form {
+    font-size: 30px;
+  }
+
   #image-container {
     width: 40%;
   }
