@@ -51,7 +51,6 @@ function displayRestaurants() {
 
   // Goes through each restaurant on the current page
   for (let restaurant of restaurantPerPage) {
-    console.log(restaurant);
     html += '<div class="restaurants">';
     html += '<div class="food-image-container">';
     html += '<img src="../images/restaurant.jpeg" alt="Kuva ravintolasta" />';
@@ -71,13 +70,15 @@ function displayRestaurants() {
     html += '<p>Puhelinnumero: ' + restaurant.phone + '</p>';
     html += '</div>';
     html += '<div class="restaurant-menu-container">';
-    html += '<a href="dailyMenu.html">Päivän menu</a>';
-    html += '<a href="weeklyMenu.html">Viikon menu</a>';
+    html += '<a href="" class="daily-menu">Päivän menu</a>';
+    html += '<a href="" class="weekly-menu">Viikon menu</a>';
     html += '</div>';
     html += '</div>';
   }
 
   container.innerHTML = html;
+
+  addEventListenerToDailyMenu();
 }
 
 // Creates and displays the pagination buttons
@@ -87,16 +88,24 @@ function displayPagination() {
   // Calculates how many pages are needed
   const totalPages = Math.ceil(restaurants.length / restaurantAmount);
 
+  // Calculates the first and last page to display
+  let start = Math.max(1, currentPage - 2);
+  let end = Math.min(totalPages, currentPage + 2);
+
   let html = '';
 
   html += '<a href="#" data-page="' + (currentPage - 1) + '">&laquo;</a>';
 
-  for (let i = 1; i <= totalPages; i++) {
-    if (i === currentPage) {
-      html += '<a href="#" data-page="' + i + '" class="active">' + i + '</a>';
-    } else {
-      html += '<a href="#" data-page="' + i + '">' + i + '</a>';
-    }
+  // Shows two pages before and after current page if possible
+  for (let i = start; i <= end; i++) {
+    html +=
+      '<a href="#" data-page="' +
+      i +
+      '" class="' +
+      (currentPage === i ? 'active' : '') +
+      '">' +
+      i +
+      '</a>';
   }
 
   html += '<a href="#" data-page="' + (currentPage + 1) + '">&raquo;</a>';
@@ -128,6 +137,19 @@ document
       displayPagination();
     }
   });
+
+let weeklyMenuItems = document.querySelectorAll('.weekly-menu');
+
+function addEventListenerToDailyMenu() {
+  let dailyMenuItems = document.querySelectorAll('.daily-menu');
+
+  dailyMenuItems.forEach((dailyMenu) => {
+    dailyMenu.addEventListener('click', function (event) {
+      event.preventDefault();
+      console.log(event.target.dataset);
+    });
+  });
+}
 
 async function success(pos) {
   const crd = pos.coords;
