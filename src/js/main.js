@@ -74,10 +74,14 @@ function displayRestaurants() {
     html +=
       '<a href="" class="daily-menu" data-value="' +
       restaurant._id +
+      '" data-name="' +
+      restaurant.name +
       '">Päivän menu</a>';
     html +=
       '<a href="" class="weekly-menu" data-value="' +
       restaurant._id +
+      '" data-name="' +
+      restaurant.name +
       '">Viikon menu</a>';
     html += '</div>';
     html += '</div>';
@@ -155,8 +159,13 @@ function addEventListenerToDailyMenu() {
       event.preventDefault();
 
       const restaurantId = this.dataset.value;
+      const restaurantName = this.dataset.name;
 
-      location.href = './dailyMenu.html?id=' + restaurantId;
+      location.href =
+        './dailyMenu.html?id=' +
+        restaurantId +
+        '&restaurantName=' +
+        restaurantName;
 
       //console.log(menu);
     });
@@ -172,8 +181,13 @@ function addEventListenerToWeeklyMenu() {
       event.preventDefault();
 
       const restaurantId = this.dataset.value;
+      const restaurantName = this.dataset.name;
 
-      location.href = './weeklyMenu.html?id=' + restaurantId;
+      location.href =
+        './dailyMenu.html?id=' +
+        restaurantId +
+        '&restaurantName=' +
+        restaurantName;
 
       //console.log(menu);
     });
