@@ -51,6 +51,7 @@ function displayRestaurants() {
 
   // Goes through each restaurant on the current page
   for (let restaurant of restaurantPerPage) {
+    //console.log(restaurant);
     html += '<div class="restaurants">';
     html += '<div class="food-image-container">';
     html += '<img src="../images/restaurant.jpeg" alt="Kuva ravintolasta" />';
@@ -70,8 +71,14 @@ function displayRestaurants() {
     html += '<p>Puhelinnumero: ' + restaurant.phone + '</p>';
     html += '</div>';
     html += '<div class="restaurant-menu-container">';
-    html += '<a href="" class="daily-menu">Päivän menu</a>';
-    html += '<a href="" class="weekly-menu">Viikon menu</a>';
+    html +=
+      '<a href="" class="daily-menu" data-value="' +
+      restaurant._id +
+      '">Päivän menu</a>';
+    html +=
+      '<a href="" class="weekly-menu" data-value="' +
+      restaurant._id +
+      '">Viikon menu</a>';
     html += '</div>';
     html += '</div>';
   }
@@ -79,6 +86,7 @@ function displayRestaurants() {
   container.innerHTML = html;
 
   addEventListenerToDailyMenu();
+  addEventListenerToWeeklyMenu();
 }
 
 // Creates and displays the pagination buttons
@@ -138,15 +146,36 @@ document
     }
   });
 
-let weeklyMenuItems = document.querySelectorAll('.weekly-menu');
-
+// Sends the restaurant ID to the daily menu page
 function addEventListenerToDailyMenu() {
   let dailyMenuItems = document.querySelectorAll('.daily-menu');
 
   dailyMenuItems.forEach((dailyMenu) => {
-    dailyMenu.addEventListener('click', function (event) {
+    dailyMenu.addEventListener('click', async function (event) {
       event.preventDefault();
-      console.log(event.target.dataset);
+
+      const restaurantId = this.dataset.value;
+
+      location.href = './dailyMenu.html?id=' + restaurantId;
+
+      //console.log(menu);
+    });
+  });
+}
+
+// Sends the restaurant ID to the weekly menu page
+function addEventListenerToWeeklyMenu() {
+  let weeklyMenuItems = document.querySelectorAll('.weekly-menu');
+
+  weeklyMenuItems.forEach((weeklyMenu) => {
+    weeklyMenu.addEventListener('click', async function (event) {
+      event.preventDefault();
+
+      const restaurantId = this.dataset.value;
+
+      location.href = './weeklyMenu.html?id=' + restaurantId;
+
+      //console.log(menu);
     });
   });
 }
