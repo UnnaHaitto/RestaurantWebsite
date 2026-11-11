@@ -1,5 +1,6 @@
 import {restaurants, fetchRestaurants} from './restaurantFetch.js';
 
+// Displays fetched restaurants on a map
 async function displayRestaurants() {
   await fetchRestaurants();
 
@@ -17,6 +18,7 @@ async function displayRestaurants() {
 
     let marker = L.marker([long, lat]).addTo(map);
 
+    // Shows restaurant and address when market clicked
     marker.bindPopup(
       '<h3>' + restaurant.name + '</h3> <p>' + restaurant.address + '</p>'
     );
