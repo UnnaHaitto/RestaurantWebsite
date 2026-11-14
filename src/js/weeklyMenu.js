@@ -12,6 +12,10 @@ async function createWeeklyMenu() {
 
   const monthContainer = document.querySelector('.month');
 
+  const dayContainer = document.querySelector('#day-container');
+
+  const foodItemCotainer = document.querySelector('.food-items-container');
+
   const date = weeklyMenu.days;
 
   let month = date[1].date.split('. ')[1];
@@ -35,9 +39,171 @@ async function createWeeklyMenu() {
 
   console.log(courses);
 
-  //console.log(days);
+  //console.log('Days: ' + days);
 
   //console.log(weeklyMenu);
+
+  let htmlDays = '';
+
+  let htmlMenu = '';
+
+  for (let i = 0; i < days.length; i++) {
+    console.log(days[i].split(' ')[0]);
+    switch (days[i].split(' ')[0]) {
+      case 'maanantai':
+        htmlDays +=
+          '<a href="#monday" class="day-button active">' + days[i] + '</a>';
+
+        htmlMenu += '<div id="monday" class="menu show-menu">';
+
+        for (let course of courses[i]) {
+          htmlMenu += '<div class="food-container">';
+          htmlMenu += '<div class="food-data-container">';
+          htmlMenu += '<p class="food-name">' + course.name + '</p>';
+          htmlMenu += '<p class="food-price">' + course.price + '</p>';
+          htmlMenu += '</div>';
+          htmlMenu += '<p class="allergen-info">';
+          for (let restriction of course.diets) {
+            htmlMenu += restriction + ' ';
+          }
+          htmlMenu += '</p>';
+          htmlMenu += '</div>';
+        }
+
+        htmlMenu += '</div>';
+
+        break;
+      case 'tiistai':
+        htmlDays += '<a href="#tuesday" class="day-button">' + days[i] + '</a>';
+
+        htmlMenu += '<div id="tuesday" class="menu">';
+
+        for (let course of courses[i]) {
+          htmlMenu += '<div class="food-container">';
+          htmlMenu += '<div class="food-data-container">';
+          htmlMenu += '<p class="food-name">' + course.name + '</p>';
+          htmlMenu += '<p class="food-price">' + course.price + '</p>';
+          htmlMenu += '</div>';
+          htmlMenu += '<p class="allergen-info">';
+          for (let restriction of course.diets) {
+            htmlMenu += restriction + ' ';
+          }
+          htmlMenu += '</p>';
+          htmlMenu += '</div>';
+        }
+
+        htmlMenu += '</div>';
+
+        break;
+      case 'keskiviikko':
+        htmlDays +=
+          '<a href="#wednesday" class="day-button">' + days[i] + '</a>';
+
+        htmlMenu += '<div id="wednesday" class="menu">';
+
+        for (let course of courses[i]) {
+          htmlMenu += '<div class="food-container">';
+          htmlMenu += '<div class="food-data-container">';
+          htmlMenu += '<p class="food-name">' + course.name + '</p>';
+          htmlMenu += '<p class="food-price">' + course.price + '</p>';
+          htmlMenu += '</div>';
+          htmlMenu += '<p class="allergen-info">';
+          for (let restriction of course.diets) {
+            htmlMenu += restriction + ' ';
+          }
+          htmlMenu += '</p>';
+          htmlMenu += '</div>';
+        }
+
+        htmlMenu += '</div>';
+
+        break;
+      case 'torstai':
+        htmlDays +=
+          '<a href="#thursday" class="day-button">' + days[i] + '</a>';
+
+        htmlMenu += '<div id="thursday" class="menu">';
+
+        for (let course of courses[i]) {
+          htmlMenu += '<div class="food-container">';
+          htmlMenu += '<div class="food-data-container">';
+          htmlMenu += '<p class="food-name">' + course.name + '</p>';
+          htmlMenu += '<p class="food-price">' + course.price + '</p>';
+          htmlMenu += '</div>';
+          htmlMenu += '<p class="allergen-info">';
+          for (let restriction of course.diets) {
+            htmlMenu += restriction + ' ';
+          }
+          htmlMenu += '</p>';
+          htmlMenu += '</div>';
+        }
+
+        htmlMenu += '</div>';
+
+        break;
+      case 'perjantai':
+        htmlDays += '<a href="#friday" class="day-button">' + days[i] + '</a>';
+
+        htmlMenu += '<div id="friday" class="menu">';
+
+        for (let course of courses[i]) {
+          htmlMenu += '<div class="food-container">';
+          htmlMenu += '<div class="food-data-container">';
+          htmlMenu += '<p class="food-name">' + course.name + '</p>';
+          htmlMenu += '<p class="food-price">' + course.price + '</p>';
+          htmlMenu += '</div>';
+          htmlMenu += '<p class="allergen-info">';
+          for (let restriction of course.diets) {
+            htmlMenu += restriction + ' ';
+          }
+          htmlMenu += '</p>';
+          htmlMenu += '</div>';
+        }
+
+        htmlMenu += '</div>';
+
+        break;
+    }
+  }
+
+  foodItemCotainer.innerHTML = htmlMenu;
+
+  dayContainer.innerHTML = htmlDays;
+
+  addDayEventListeners();
+}
+
+function addDayEventListeners() {
+  const days = document.querySelectorAll('.day-button');
+
+  days.forEach((day) => {
+    day.addEventListener('click', function (event) {
+      event.preventDefault;
+
+      dayName = day.href.split('#')[1];
+
+      const allMenus = document.querySelectorAll('.menu');
+
+      const allDayButtons = document.querySelectorAll('.day-button');
+
+      allDayButtons.forEach((dayButton) => {
+        dayButton.classList.remove('active');
+      });
+
+      allMenus.forEach((menu) => {
+        menu.classList.remove('show-menu');
+      });
+
+      const clickedDay = document.querySelector('a[href="#' + dayName + '"]');
+
+      const clickedMenu = document.getElementById(dayName);
+
+      console.log(clickedMenu);
+
+      clickedDay.classList.add('active');
+      clickedMenu.classList.add('show-menu');
+    });
+  });
 }
 
 function getMonth(month) {
