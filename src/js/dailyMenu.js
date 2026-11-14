@@ -31,6 +31,8 @@ async function createMenu() {
   for (let i = 0; i < dailyMenu.courses.length; i++) {
     //console.log(dailyMenu.courses[i].name);
 
+    html +=
+      '<div id="daily-food-items-container" class="food-items-container>"';
     html += '<div class="food-container">';
     html += '<div class="food-data-container">';
     html += '<p class="food-name">' + dailyMenu.courses[i].name + '</p>';
@@ -41,6 +43,7 @@ async function createMenu() {
       html += restriction + ' ';
     }
     html += '</p>';
+    html += '</div>';
     html += '</div>';
   }
 
