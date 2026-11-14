@@ -100,6 +100,11 @@ function displayPagination() {
   // Calculates how many pages are needed
   const totalPages = Math.ceil(restaurants.length / restaurantAmount);
 
+  if (totalPages <= 1) {
+    pagination.innerHTML = '';
+    return;
+  }
+
   // Calculates the first and last page to display
   let start = Math.max(1, currentPage - 2);
   let end = Math.min(totalPages, currentPage + 2);
