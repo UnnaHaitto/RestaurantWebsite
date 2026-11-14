@@ -107,7 +107,7 @@ header {
 .food-container {
   padding-bottom: 20px;
   padding-top: 20px;
-  width: 30%;
+  width: 100%;
   border-top: 1px solid #047c58;
 }
 
@@ -270,6 +270,19 @@ header {
 
 .show-menu {
   display: block;
+}
+
+#daily-food-items-container {
+  padding: 20px;
+  border-top: 1px solid #047c58;
+  text-align: center;
+}
+
+.food-items-container {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  text-align: center;
 }
 
 #day-container {
@@ -574,10 +587,6 @@ header {
     margin: 5px;
     font-size: 20px;
   }
-
-  .food-container {
-    width: 50%;
-  }
 }
 
 @media screen and (max-width: 650px) {
@@ -607,8 +616,9 @@ header {
     display: flex;
   }
 
-  .food-container {
-    width: 80%;
+  #day-container a {
+    padding: 0;
+    margin: 0;
   }
 }
 
