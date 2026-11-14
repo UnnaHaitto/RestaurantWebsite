@@ -27,11 +27,22 @@
       <div id="register-container">
         <h1>Rekisteröidy</h1>
         <form id="register-form">
-          <label for="username">Käyttäjänimi:</label>
-          <input type="text" id="username" name="username" required />
-          <label for="password">Salasana:</label>
-          <input type="password" id="password" name="password" required />
+          <label for="registerUsername">Käyttäjänimi:</label>
+          <input type="text" id="registerUsername" name="username" required />
+          <p id="usernameError"></p>
+          <label for="registerPassword">Salasana:</label>
+          <input
+            type="password"
+            id="registerPassword"
+            name="password"
+            required
+          />
+          <p id="passwordError"></p>
+          <label for="registerMail">Mail:</label>
+          <input type="text" id="registerMail" name="mail" required />
+          <p id="mailError"></p>
           <button id="register-button">Rekisteröidy</button>
+          <p id="registerError"></p>
           <a href="./login.html">Omistatko jo käyttäjän? Kirjaudu sisään.</a>
         </form>
       </div>
