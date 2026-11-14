@@ -104,6 +104,50 @@ header {
   font-size: 18px;
 }
 
+#login-form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+#login-form a {
+  padding-top: 10px;
+}
+
+#register-container {
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  width: 20%;
+  background-color: #fffefe;
+  padding: 20px;
+  border: solid 2px black;
+}
+
+#register-container label {
+  padding: 5px;
+}
+
+#register-container input {
+  font-size: 18px;
+  padding: 1px;
+}
+
+#register-button {
+  margin-top: 10px;
+  font-size: 18px;
+}
+
+#register-form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+#register-form a {
+  padding-top: 10px;
+}
+
 .food-container {
   padding-bottom: 20px;
   padding-top: 20px;
@@ -418,10 +462,18 @@ header {
   #login-container {
     width: 30%;
   }
+
+  #register-container {
+    width: 30%;
+  }
 }
 
 @media screen and (max-width: 1000px) {
   #login-container {
+    width: 50%;
+  }
+
+  #register-container {
     width: 50%;
   }
 }
@@ -475,6 +527,10 @@ header {
   }
 
   #login-container {
+    width: 90%;
+  }
+
+  #register-container {
     width: 90%;
   }
 
