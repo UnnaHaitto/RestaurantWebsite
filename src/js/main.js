@@ -183,8 +183,10 @@ function addEventListenerToWeeklyMenu() {
       const restaurantId = this.dataset.value;
       const restaurantName = this.dataset.name;
 
+      console.log(restaurantId, restaurantName);
+
       location.href =
-        './dailyMenu.html?id=' +
+        './weeklyMenu.html?id=' +
         restaurantId +
         '&restaurantName=' +
         restaurantName;
