@@ -234,6 +234,14 @@ header {
   padding-top: 10px;
 }
 
+.sidebar li button {
+  margin-left: 20px;
+  padding: 5px;
+  padding-left: 0%;
+  background: none;
+  border: none;
+}
+
 .content {
   flex: 8;
   display: flex;
@@ -565,6 +573,10 @@ header {
   }
 
   .sidebar-container li {
+    font-size: 20px;
+  }
+
+  .sidebar-container li button {
     font-size: 20px;
   }
 
