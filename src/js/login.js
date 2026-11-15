@@ -1,29 +1,59 @@
-document.getElementById('login-button').addEventListener('click', function () {
-  const username = document.getElementById('username').value;
-  const password = document.getElementById('password').value;
+const loginButton = document.getElementById('login-button');
 
+loginButton.addEventListener('click', async function (event) {
+  event.preventDefault;
+
+  const username = document.getElementById('loginUsername').value;
+  const password = document.getElementById('loginPassword').value;
+  const error = document.getElementById('loginError');
+
+  if (await login(username, password)) {
+    error.innerText = '';
+    location.href = './login.html';
+  } else {
+    error.innerText = 'Kirjautuminen epäonnistui';
+  }
+
+  /*
   if (username === 'admin' && password === '1234') {
     window.location.href = '../pages/userPage.html';
   } else {
     alert('Virheellinen käyttäjätunnus tai salasana.');
-  }
+  }*/
 });
 
-async function createUser() {
+async function login(username, password) {
+  const data = {
+    body: JSON.stringify({
+      username: username,
+      password: password,
+    }),
+    method: 'POST',
+    headers: {
+      'Content-type': 'application/json',
+    },
+  };
+
   try {
     const response = await fetch(
-      'https://media2.edu.metropolia.fi/restaurant/api/v1/restaurants'
+      'https://media2.edu.metropolia.fi/restaurant/api/v1/auth/login',
+      data
     );
 
     if (!response.ok) {
-      throw new Error('Unable to fetch restaurants!');
+      const error = await response.json();
+      console.log('error: ', error);
+      throw new Error('Unable to create user!');
     }
 
-    restaurants = await response.json();
+    const json = await response.json();
 
-    return restaurants;
+    console.log('result: ', json);
+
+    return true;
   } catch (error) {
-    restaurantPromise = null;
     console.log(error.message);
+
+    return false;
   }
 }
