@@ -1,15 +1,18 @@
 const loginButton = document.getElementById('login-button');
+let token = '';
 
 loginButton.addEventListener('click', async function (event) {
-  event.preventDefault;
+  event.preventDefault();
 
   const username = document.getElementById('loginUsername').value;
   const password = document.getElementById('loginPassword').value;
   const error = document.getElementById('loginError');
 
+  await login(username, password);
+
   if (await login(username, password)) {
     error.innerText = '';
-    location.href = './login.html';
+    location.href = './userPage.html?token=' + token;
   } else {
     error.innerText = 'Kirjautuminen epäonnistui';
   }
@@ -48,7 +51,9 @@ async function login(username, password) {
 
     const json = await response.json();
 
-    console.log('result: ', json);
+    console.log('result: ', json.token);
+
+    token = json.token;
 
     return true;
   } catch (error) {
