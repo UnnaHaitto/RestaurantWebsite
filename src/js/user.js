@@ -3,9 +3,73 @@ const input = document.getElementById('input');
 let file = '';
 const token = sessionStorage.getItem('token');
 
-console.log('retrieved token: ', token);
+const username = document.getElementById('changeUsername');
+const password = document.getElementById('changePassword');
+const mail = document.getElementById('changeMail');
 
-console.log(window.location.origin);
+const passwordError = document.getElementById('changePasswordError');
+const mailError = document.getElementById('changeMailError');
+const errorContainer = document.getElementById('changeError');
+
+function validatePassword(password) {
+  html = '';
+  if (password.value.length === 0) {
+    passwordError.innerText = '';
+    return;
+  }
+
+  if (password.value.length > 0 && password.value.length < 5) {
+    html += ' Salasanan pitää olla ainakin 5 merkkiä pitkä ';
+  } else if (!/[a-z]/.test(password.value)) {
+    html += ' Salasanan pitää sisältää pieniä kirjaimia ';
+  } else if (!/[A-Z]/.test(password.value)) {
+    html += ' Salasanan pitää sisältää isoja kirjaimia ';
+  } else if (!/[0-9]/.test(password.value)) {
+    html += ' Salasanan pitää sisältää numeroita ';
+  } else if (!/[^a-zA-Z0-9]/.test(password.value)) {
+    html += ' Salasanan pitää sisältää erikoismerkkejä ';
+  } else {
+    html = '';
+  }
+
+  passwordError.innerText = html;
+}
+
+function validateMail(mail) {
+  html = '';
+
+  if (mail.value.length === 0) {
+    mailError.innerText = '';
+    return;
+  }
+
+  if (
+    mail.value.length <= 0 ||
+    !/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(mail.value)
+  ) {
+    html += 'Pitää antaa kelvollinen sähköpostiosoite';
+  } else {
+    html = '';
+  }
+
+  mailError.innerText = html;
+}
+
+password.addEventListener('input', () => validatePassword(password));
+username.addEventListener('input', () => validateUsername(username));
+mail.addEventListener('input', () => validateMail(mail));
+
+function noErrors() {
+  if (
+    usernameError.innerText === '' &&
+    passwordError.innerText === '' &&
+    mailError.innerText === ''
+  ) {
+    return true;
+  }
+
+  return false;
+}
 
 if (token) {
   addDataToPage();
@@ -39,7 +103,7 @@ input.addEventListener('change', async function (event) {
 async function addDataToPage() {
   data = await fetchUserData();
 
-  console.log('User data:', data.avatar);
+  //console.log('User data:', data.avatar);
 
   image.src =
     'https://media2.edu.metropolia.fi/restaurant/uploads/' + data.avatar;
@@ -115,6 +179,100 @@ async function saveImage(file) {
     return false;
   }
 }
+
+async function isCreationPossible(username) {
+  try {
+    const response = await fetch(
+      'https://media2.edu.metropolia.fi/restaurant/api/v1/users/available/' +
+        username
+    );
+
+    if (!response.ok) {
+      throw new Error('User availability check failed!');
+    }
+
+    const json = await response.json();
+
+    console.log(json);
+    console.log(json.available);
+
+    return json.available;
+  } catch (error) {
+    console.log(error.message);
+  }
+}
+
+async function updateUserInfo() {
+  const username = document.getElementById('changeUsername').value;
+  const password = document.getElementById('changePassword').value;
+  const mail = document.getElementById('changeMail').value;
+
+  console.log(username, password, mail);
+
+  let updateData = {};
+
+  if (username !== '') {
+    updateData.username = username;
+  }
+
+  if (password !== '') {
+    updateData.password = password;
+  }
+
+  if (mail !== '') {
+    updateData.email = mail;
+  }
+
+  let isPossible = false;
+
+  if (username === '') {
+    isPossible = true;
+  } else {
+    isPossible = await isCreationPossible(username);
+  }
+
+  if (isPossible) {
+    errorContainer.innerText = '';
+
+    const data = {
+      body: JSON.stringify(updateData),
+      method: 'PUT',
+      headers: {
+        Authorization: 'Bearer ' + token,
+        'Content-Type': 'application/json',
+      },
+    };
+
+    try {
+      const response = await fetch(
+        'https://media2.edu.metropolia.fi/restaurant/api/v1/users',
+        data
+      );
+      if (!response.ok) throw new Error('Invalid input!');
+      const json = await response.json();
+      console.log('result', json);
+    } catch (e) {
+      console.log('error', e);
+      errorContainer.innerText = 'Käyttäjän tietojen päivittäminen epäonnistui';
+    }
+  } else {
+    errorContainer.innerText = 'Käyttäjänimi ei ole vapaana';
+  }
+}
+
+const changeButton = document.getElementById('changeButton');
+
+changeButton.addEventListener('click', async function (event) {
+  event.preventDefault();
+
+  if (noErrors) {
+    await updateUserInfo();
+
+    await addDataToPage();
+  } else {
+    errorContainer = 'Selvitä ensin kaikki ongelmat';
+  }
+});
 
 function logout() {
   sessionStorage.clear();
