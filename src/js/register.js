@@ -9,15 +9,15 @@ const mailError = document.getElementById('mailError');
 function validatePassword(password) {
   html = '';
   if (password.value.length < 5) {
-    html += ' password must be atleast 5 characters long ';
+    html += ' Salasanan pitää olla ainakin 5 merkkiä pitkä ';
   } else if (!/[a-z]/.test(password.value)) {
-    html += ' password must have lower case letters ';
+    html += ' Salasanan pitää sisältää pieniä kirjaimia ';
   } else if (!/[A-Z]/.test(password.value)) {
-    html += ' password must have upper case letters ';
+    html += ' Salasanan pitää sisältää isoja kirjaimia ';
   } else if (!/[0-9]/.test(password.value)) {
-    html += ' password must have numbers ';
+    html += ' Salasanan pitää sisältää numeroita ';
   } else if (!/[^a-zA-Z0-9]/.test(password.value)) {
-    html += ' password must have special characters ';
+    html += ' Salasanan pitää sisältää erikoismerkkejä ';
   } else {
     html = '';
   }
@@ -28,7 +28,7 @@ function validatePassword(password) {
 function validateUsername(username) {
   html = '';
   if (username.value.length <= 0) {
-    html += 'Must give username';
+    html += 'Pitää antaa käyttäjä nimi';
   } else {
     html = '';
   }
@@ -42,7 +42,7 @@ function validateMail(mail) {
     mail.value.length <= 0 ||
     !/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(mail.value)
   ) {
-    html += 'Must give a valid mail';
+    html += 'Pitää antaa kelvollinen sähköpostiosoite';
   } else {
     html = '';
   }
@@ -150,17 +150,17 @@ registerButton.addEventListener('click', async function (event) {
       const mailValue = document.getElementById('registerMail').value;
 
       if (!(await createUser(usernameValue, passwordValue, mailValue))) {
-        registerError.innerText = 'Unable to create user';
+        registerError.innerText = 'Käyttäjän luominen ei onnistu';
         return;
       } else {
-        location.href = './userPage.html';
+        location.href = './login.html';
       }
     } else {
-      registerError.innerText = 'Username is taken';
+      registerError.innerText = 'Käyttäjä on varattu';
       return;
     }
   } else {
-    registerError.innerText = 'Must first solve errors';
+    registerError.innerText = 'Pitää ensin selvittää ongelmat';
     return;
   }
 });
