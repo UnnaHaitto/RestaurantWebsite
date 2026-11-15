@@ -7,6 +7,10 @@
     sans-serif;
 }
 
+.error {
+  color: red;
+}
+
 .like-button {
   color: red;
   cursor: pointer;
