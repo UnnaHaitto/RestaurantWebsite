@@ -11,6 +11,10 @@
   color: red;
 }
 
+.sidebar li a {
+  cursor: pointer;
+}
+
 .like-button {
   color: red;
   cursor: pointer;
