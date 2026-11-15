@@ -16,13 +16,6 @@ loginButton.addEventListener('click', async function (event) {
   } else {
     error.innerText = 'Kirjautuminen epäonnistui';
   }
-
-  /*
-  if (username === 'admin' && password === '1234') {
-    window.location.href = '../pages/userPage.html';
-  } else {
-    alert('Virheellinen käyttäjätunnus tai salasana.');
-  }*/
 });
 
 async function login(username, password) {
