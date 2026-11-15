@@ -75,20 +75,20 @@
             <h2>Muuta tietoja</h2>
             <form id="user-info-form">
               <label for="changeUsername">Käyttäjänimi:</label>
-              <input type="text" id="changeUsername" name="username" required />
+              <input type="text" id="changeUsername" name="username" />
 
               <label for="changePassword">Salasana:</label>
-              <input
-                type="password"
-                id="changePassword"
-                name="password"
-                required
-              />
+              <input type="password" id="changePassword" name="password" />
+              <p id="changePasswordError"></p>
 
               <label for="changeMail">Sähköposti:</label>
-              <input type="text" id="changeMail" name="mail" required />
+              <input type="text" id="changeMail" name="mail" />
+              <p id="changeMailError"></p>
 
-              <button type="submit">Tallenna muutokset</button>
+              <button type="submit" id="changeButton">
+                Tallenna muutokset
+              </button>
+              <p id="changeError"></p>
             </form>
           </section>
 
