@@ -56,15 +56,10 @@ function validateMail(mail) {
 }
 
 password.addEventListener('input', () => validatePassword(password));
-username.addEventListener('input', () => validateUsername(username));
 mail.addEventListener('input', () => validateMail(mail));
 
 function noErrors() {
-  if (
-    usernameError.innerText === '' &&
-    passwordError.innerText === '' &&
-    mailError.innerText === ''
-  ) {
+  if (passwordError.innerText === '' && mailError.innerText === '') {
     return true;
   }
 
@@ -203,32 +198,32 @@ async function isCreationPossible(username) {
 }
 
 async function updateUserInfo() {
-  const username = document.getElementById('changeUsername').value;
-  const password = document.getElementById('changePassword').value;
-  const mail = document.getElementById('changeMail').value;
+  const givenUsername = document.getElementById('changeUsername').value;
+  const givenPassword = document.getElementById('changePassword').value;
+  const givenMail = document.getElementById('changeMail').value;
 
-  console.log(username, password, mail);
+  console.log(givenUsername, givenPassword, givenMail);
 
   let updateData = {};
 
-  if (username !== '') {
-    updateData.username = username;
+  if (givenUsername !== '') {
+    updateData.username = givenUsername;
   }
 
-  if (password !== '') {
-    updateData.password = password;
+  if (givenPassword !== '') {
+    updateData.password = givenPassword;
   }
 
-  if (mail !== '') {
-    updateData.email = mail;
+  if (givenMail !== '') {
+    updateData.email = givenMail;
   }
 
   let isPossible = false;
 
-  if (username === '') {
+  if (givenUsername === '') {
     isPossible = true;
   } else {
-    isPossible = await isCreationPossible(username);
+    isPossible = await isCreationPossible(givenUsername);
   }
 
   if (isPossible) {
@@ -248,9 +243,15 @@ async function updateUserInfo() {
         'https://media2.edu.metropolia.fi/restaurant/api/v1/users',
         data
       );
+
       if (!response.ok) throw new Error('Invalid input!');
+
       const json = await response.json();
       console.log('result', json);
+
+      username.value = '';
+      mail.value = '';
+      password.value = '';
     } catch (e) {
       console.log('error', e);
       errorContainer.innerText = 'Käyttäjän tietojen päivittäminen epäonnistui';
@@ -265,12 +266,12 @@ const changeButton = document.getElementById('changeButton');
 changeButton.addEventListener('click', async function (event) {
   event.preventDefault();
 
-  if (noErrors) {
+  if (noErrors()) {
     await updateUserInfo();
 
     await addDataToPage();
   } else {
-    errorContainer = 'Selvitä ensin kaikki ongelmat';
+    errorContainer.innerText = 'Selvitä ensin kaikki ongelmat';
   }
 });
 
