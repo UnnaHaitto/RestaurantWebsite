@@ -7,13 +7,8 @@ async function createWeeklyMenu() {
   const weeklyMenu = await getWeeklyMenu(restaurantId);
 
   const h1Container = document.querySelector('.restaurant-name');
-
-  h1Container.innerText = restaurantName;
-
   const monthContainer = document.querySelector('.month');
-
   const dayContainer = document.querySelector('#day-container');
-
   const foodItemCotainer = document.querySelector('.food-items-container');
 
   const date = weeklyMenu.days;
@@ -21,6 +16,8 @@ async function createWeeklyMenu() {
   let month = date[1].date.split('. ')[1];
 
   const monthName = getMonth(month);
+
+  h1Container.innerText = restaurantName;
 
   monthContainer.innerText = monthName;
 
