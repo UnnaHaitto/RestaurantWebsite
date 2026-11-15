@@ -36,7 +36,7 @@ async function login(username, password) {
     if (!response.ok) {
       const error = await response.json();
       console.log('error: ', error);
-      throw new Error('Unable to create user!');
+      throw new Error('Unable to login user!');
     }
 
     const json = await response.json();
