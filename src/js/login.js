@@ -15,6 +15,13 @@ loginButton.addEventListener('click', async function (event) {
   }
 });
 
+/**
+ * Posts the user data to the REST API login and saves the users token to session storage.
+ *
+ * @param {string} username - the users given username.
+ * @param {string} password - the users given password.
+ * @returns {Promise<Object>} - the logged in users data.
+ */
 async function login(username, password) {
   const data = {
     body: JSON.stringify({
