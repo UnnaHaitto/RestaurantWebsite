@@ -9,34 +9,38 @@ const restaurantName = decodeURIComponent(parameters[1].split('=')[1]);
  * Updates restaurant heading and creates HTML elements for each course in the daily menu.
  */
 async function createMenu() {
-  const dailyMenu = await getDailyMenu(restaurantId);
+  try {
+    const dailyMenu = await getDailyMenu(restaurantId);
 
-  const h1Container = document.querySelector('.restaurant-name');
+    const h1Container = document.querySelector('.restaurant-name');
 
-  const menuContainer = document.querySelector('#daily-menu-container');
+    const menuContainer = document.querySelector('#daily-menu-container');
 
-  h1Container.innerText = restaurantName;
+    h1Container.innerText = restaurantName;
 
-  let html = '';
+    let html = '';
 
-  for (let i = 0; i < dailyMenu.courses.length; i++) {
-    html +=
-      '<div id="daily-food-items-container" class="food-items-container">';
-    html += '<div class="food-container">';
-    html += '<div class="food-data-container">';
-    html += '<p class="food-name">' + dailyMenu.courses[i].name + '</p>';
-    html += '<p class="food-price">' + dailyMenu.courses[i].price + '</p>';
-    html += '</div>';
-    html += '<p class="allergen-info">';
-    for (let restriction of dailyMenu.courses[i].diets) {
-      html += restriction + ' ';
+    for (let i = 0; i < dailyMenu.courses.length; i++) {
+      html +=
+        '<div id="daily-food-items-container" class="food-items-container">';
+      html += '<div class="food-container">';
+      html += '<div class="food-data-container">';
+      html += '<p class="food-name">' + dailyMenu.courses[i].name + '</p>';
+      html += '<p class="food-price">' + dailyMenu.courses[i].price + '</p>';
+      html += '</div>';
+      html += '<p class="allergen-info">';
+      for (let restriction of dailyMenu.courses[i].diets) {
+        html += restriction + ' ';
+      }
+      html += '</p>';
+      html += '</div>';
+      html += '</div>';
     }
-    html += '</p>';
-    html += '</div>';
-    html += '</div>';
-  }
 
-  menuContainer.innerHTML = html;
+    menuContainer.innerHTML = html;
+  } catch (error) {
+    console.log('Failed to display daily menu: ', error.message);
+  }
 }
 
 /**
@@ -46,23 +50,19 @@ async function createMenu() {
  * @returns {Promise<Object>} - the restaurant's daily menu.
  */
 async function getDailyMenu(restaurantId) {
-  try {
-    const response = await fetch(
-      'https://media2.edu.metropolia.fi/restaurant/api/v1/restaurants/daily/' +
-        restaurantId +
-        '/fi'
-    );
+  const response = await fetch(
+    'https://media2.edu.metropolia.fi/restaurant/api/v1/restaurants/daily/' +
+      restaurantId +
+      '/fi'
+  );
 
-    if (!response.ok) {
-      throw new Error('Unable to fetch daily menu!');
-    }
-
-    const dailyMenu = await response.json();
-
-    return dailyMenu;
-  } catch (error) {
-    console.log(error.message);
+  if (!response.ok) {
+    throw new Error('Unable to fetch daily menu!');
   }
+
+  const dailyMenu = await response.json();
+
+  return dailyMenu;
 }
 
 createMenu();
