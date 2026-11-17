@@ -3,34 +3,18 @@ const parameters = location.search.split('&');
 const restaurantId = parameters[0].split('=')[1];
 const restaurantName = decodeURIComponent(parameters[1].split('=')[1]);
 
-//console.log(restaurantId, restaurantName);
-
 async function createMenu() {
   const dailyMenu = await getDailyMenu(restaurantId);
 
   const h1Container = document.querySelector('.restaurant-name');
 
-  h1Container.innerText = restaurantName;
-
-  console.log(dailyMenu);
-
   const menuContainer = document.querySelector('#daily-menu-container');
+
+  h1Container.innerText = restaurantName;
 
   let html = '';
 
-  /*
-          <div class="food-container">
-          <div class="food-data-container">
-            <p class="food-name">Ruokalaji</p>
-            <p class="food-description">Kuvaus</p>
-            <p class="food-price">Hinta</p>
-          </div>
-          <p class="allergen-info">Allergiatiedot</p>
-        </div>*/
-
   for (let i = 0; i < dailyMenu.courses.length; i++) {
-    //console.log(dailyMenu.courses[i].name);
-
     html +=
       '<div id="daily-food-items-container" class="food-items-container>"';
     html += '<div class="food-container">';
