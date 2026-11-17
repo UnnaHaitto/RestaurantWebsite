@@ -234,12 +234,18 @@ function getMonth(month) {
   }
 }
 
-async function getWeeklyMenu(id) {
+/**
+ * Fetches the weekly menu for a restaurant from the REST API.
+ *
+ * @param {string} restaurantId - the ID of the restaurant.
+ * @returns {Promise<Object>} - the restaurant's weekly menu.
+ */
+async function getWeeklyMenu(restaurantId) {
   console.log(id);
   try {
     const response = await fetch(
       'https://media2.edu.metropolia.fi/restaurant/api/v1/restaurants/weekly/' +
-        id +
+        restaurantId +
         '/fi'
     );
 
