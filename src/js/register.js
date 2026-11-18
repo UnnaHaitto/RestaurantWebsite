@@ -1,4 +1,8 @@
-import {validateUsername, validatePassword, validateEmail} from './validation';
+import {
+  validateUsername,
+  validatePassword,
+  validateEmail,
+} from './validation.js';
 
 const username = document.getElementById('registerUsername');
 const password = document.getElementById('registerPassword');
