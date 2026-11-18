@@ -20,6 +20,7 @@ loginForm.addEventListener('submit', async function (event) {
     location.href = './userPage.html?';
   } else {
     error.innerText = 'Kirjautuminen epäonnistui';
+    return;
   }
 });
 
@@ -49,16 +50,14 @@ async function login(username, password) {
     );
 
     if (!response.ok) {
-      const error = await response.json();
-      console.log('error: ', error);
-      throw new Error('Unable to login user!');
+      console.log('Login failed: ', response.status);
+      return false;
     }
 
     const json = await response.json();
 
     sessionStorage.setItem('token', json.token);
 
-    console.log('result: ', sessionStorage.getItem('token'));
     return true;
   } catch (error) {
     console.log(error.message);
