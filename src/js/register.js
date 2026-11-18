@@ -4,6 +4,8 @@ import {
   validateEmail,
 } from './validation.js';
 
+import {isCreationPossible} from './usernameCheck.js';
+
 const username = document.getElementById('registerUsername');
 const password = document.getElementById('registerPassword');
 const email = document.getElementById('registerMail');
@@ -31,34 +33,6 @@ function noErrors() {
     passwordError.innerText === '' &&
     emailError.innerText === ''
   );
-}
-
-/**
- * Checks whether the username is available.
- *
- * @param {string} username - the users input username.
- *
- * @returns {Promise<Boolean>} - wether the username is available.
- */
-async function isCreationPossible(username) {
-  try {
-    const response = await fetch(
-      'https://media2.edu.metropolia.fi/restaurant/api/v1/users/available/' +
-        username
-    );
-
-    if (!response.ok) {
-      console.log('User availability check failed!');
-      return false;
-    }
-
-    const json = await response.json();
-
-    return json.available;
-  } catch (error) {
-    console.log(error.message);
-    return false;
-  }
 }
 
 /**
