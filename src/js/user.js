@@ -4,6 +4,8 @@ import {
   validateUsername,
 } from './validation.js';
 
+import {isCreationPossible} from './usernameCheck.js';
+
 const image = document.getElementById('image');
 const input = document.getElementById('input');
 const token = sessionStorage.getItem('token');
@@ -39,6 +41,13 @@ if (token) {
   window.location.href = './main.html';
 }
 
+/**
+ * Listens for the change event of the image input field.
+ * If the image is correct type it gets saved to the API and the page gets updated.
+ *
+ * @param {ChangeEvent} event - the image input field change event.
+ */
+
 input.addEventListener('change', async function (event) {
   event.preventDefault();
 
@@ -62,6 +71,9 @@ input.addEventListener('change', async function (event) {
   await addDataToPage();
 });
 
+/**
+ * Fetches user data and sets them to their spots.
+ */
 async function addDataToPage() {
   const data = await fetchUserData();
 
@@ -78,6 +90,11 @@ async function addDataToPage() {
   emailContainer.innerText = data.email;
 }
 
+/**
+ * Fetches user data from the REST API.
+ *
+ * @returns {Boolean} - Whether the data was fetched successfully.
+ */
 async function fetchUserData() {
   const data = {
     method: 'GET',
@@ -106,6 +123,13 @@ async function fetchUserData() {
   }
 }
 
+/**
+ * Saves the image to the REST API.
+ *
+ * @param {formData} file - the image form data.
+ *
+ * @returns {Boolean} - Whether the image save was successfull.
+ */
 async function saveImage(file) {
   const formData = new FormData();
   formData.append('avatar', file);
@@ -135,25 +159,6 @@ async function saveImage(file) {
     console.log(error.message);
 
     return false;
-  }
-}
-
-async function isCreationPossible(username) {
-  try {
-    const response = await fetch(
-      'https://media2.edu.metropolia.fi/restaurant/api/v1/users/available/' +
-        username
-    );
-
-    if (!response.ok) {
-      throw new Error('User availability check failed!');
-    }
-
-    const json = await response.json();
-
-    return json.available;
-  } catch (error) {
-    console.log(error.message);
   }
 }
 
