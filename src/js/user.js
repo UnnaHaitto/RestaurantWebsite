@@ -32,7 +32,11 @@ username.addEventListener('input', () => {
 });
 
 function noErrors() {
-  return passwordError.innerText === '' && emailError.innerText === '';
+  return (
+    passwordError.innerText === '' &&
+    emailError.innerText === '' &&
+    usernameError.innerText === ''
+  );
 }
 
 if (token) {
@@ -47,7 +51,6 @@ if (token) {
  *
  * @param {ChangeEvent} event - the image input field change event.
  */
-
 input.addEventListener('change', async function (event) {
   event.preventDefault();
 
@@ -93,7 +96,7 @@ async function addDataToPage() {
 /**
  * Fetches user data from the REST API.
  *
- * @returns {Boolean} - Whether the data was fetched successfully.
+ * @returns {Promise<Object>} - The fetched user data.
  */
 async function fetchUserData() {
   const data = {
@@ -126,9 +129,9 @@ async function fetchUserData() {
 /**
  * Saves the image to the REST API.
  *
- * @param {formData} file - the image form data.
+ * @param {file} file - The image file to upload.
  *
- * @returns {Boolean} - Whether the image save was successfull.
+ * @returns {Boolean} - If the image save was successfull.
  */
 async function saveImage(file) {
   const formData = new FormData();
@@ -162,6 +165,11 @@ async function saveImage(file) {
   }
 }
 
+/**
+ * Updates the users new given info to the REST API
+ *
+ * @returns {Promise<Boolean>} - wether the user data updating was successfull.
+ */
 async function updateUserInfo() {
   const givenUsername = username.value;
   const givenPassword = password.value;
@@ -214,6 +222,7 @@ async function updateUserInfo() {
     username.value = '';
     email.value = '';
     password.value = '';
+
     return true;
   } catch (e) {
     console.log('error', e);
@@ -224,6 +233,11 @@ async function updateUserInfo() {
 
 const changeButton = document.getElementById('changeButton');
 
+/**
+ * Updates the users info when the user clicks the update button if there are no errors.
+ *
+ * @param {Event} event - the on click event of the button.
+ */
 changeButton.addEventListener('click', async function (event) {
   event.preventDefault();
 
@@ -238,6 +252,9 @@ changeButton.addEventListener('click', async function (event) {
   }
 });
 
+/**
+ * Clears the session and redirects the user to main page.
+ */
 function logout() {
   sessionStorage.clear();
   window.location.href = './main.html';
@@ -245,6 +262,11 @@ function logout() {
 
 const logoutButton = document.getElementById('logout-link');
 
+/**
+ * Logs out the user when user clicks the button.
+ *
+ * @param {Event} event - the on click event of the button.
+ */
 logoutButton.addEventListener('click', function (event) {
   logout();
 });
