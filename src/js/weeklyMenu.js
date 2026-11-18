@@ -37,7 +37,10 @@ async function createWeeklyMenu() {
 
   let htmlMenu = '';
 
-  for (let i = 0; i < days.length; i++) {
+  for (let i = 0; i < date.length; i++) {
+    // TÄMÄ UUTENA
+    const [dayName, dayNumber] = date[i].date.split(' ');
+
     switch (days[i].split(' ')[0]) {
       case 'maanantai':
         htmlDays +=
