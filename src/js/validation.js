@@ -11,15 +11,15 @@ export function validatePassword(password, required = true) {
     return required ? 'Pitää antaa salasana!' : '';
   }
 
-  if (password.value.length < 5) {
+  if (password.length < 5) {
     return ' Salasanan pitää olla ainakin 5 merkkiä pitkä ';
-  } else if (!/[a-z]/.test(password.value)) {
+  } else if (!/[a-z]/.test(password)) {
     return ' Salasanan pitää sisältää pieniä kirjaimia ';
-  } else if (!/[A-Z]/.test(password.value)) {
+  } else if (!/[A-Z]/.test(password)) {
     return ' Salasanan pitää sisältää isoja kirjaimia ';
-  } else if (!/[0-9]/.test(password.value)) {
+  } else if (!/[0-9]/.test(password)) {
     return ' Salasanan pitää sisältää numeroita ';
-  } else if (!/[^a-zA-Z0-9]/.test(password.value)) {
+  } else if (!/[^a-zA-Z0-9]/.test(password)) {
     return ' Salasanan pitää sisältää erikoismerkkejä ';
   }
 
