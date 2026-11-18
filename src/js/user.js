@@ -1,3 +1,5 @@
+import {validateEmail, validatePassword} from './validation.js';
+
 const image = document.getElementById('image');
 const input = document.getElementById('input');
 let file = '';
@@ -5,65 +7,22 @@ const token = sessionStorage.getItem('token');
 
 const username = document.getElementById('changeUsername');
 const password = document.getElementById('changePassword');
-const mail = document.getElementById('changeMail');
+const email = document.getElementById('changeMail');
 
 const passwordError = document.getElementById('changePasswordError');
-const mailError = document.getElementById('changeMailError');
+const emailError = document.getElementById('changeMailError');
 const errorContainer = document.getElementById('changeError');
 
-function validatePassword(password) {
-  html = '';
-  if (password.value.length === 0) {
-    passwordError.innerText = '';
-    return;
-  }
+password.addEventListener('input', () => {
+  passwordError.innerText = validatePassword(password.value, false);
+});
 
-  if (password.value.length > 0 && password.value.length < 5) {
-    html += ' Salasanan pitää olla ainakin 5 merkkiä pitkä ';
-  } else if (!/[a-z]/.test(password.value)) {
-    html += ' Salasanan pitää sisältää pieniä kirjaimia ';
-  } else if (!/[A-Z]/.test(password.value)) {
-    html += ' Salasanan pitää sisältää isoja kirjaimia ';
-  } else if (!/[0-9]/.test(password.value)) {
-    html += ' Salasanan pitää sisältää numeroita ';
-  } else if (!/[^a-zA-Z0-9]/.test(password.value)) {
-    html += ' Salasanan pitää sisältää erikoismerkkejä ';
-  } else {
-    html = '';
-  }
-
-  passwordError.innerText = html;
-}
-
-function validateMail(mail) {
-  html = '';
-
-  if (mail.value.length === 0) {
-    mailError.innerText = '';
-    return;
-  }
-
-  if (
-    mail.value.length <= 0 ||
-    !/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(mail.value)
-  ) {
-    html += 'Pitää antaa kelvollinen sähköpostiosoite';
-  } else {
-    html = '';
-  }
-
-  mailError.innerText = html;
-}
-
-password.addEventListener('input', () => validatePassword(password));
-mail.addEventListener('input', () => validateMail(mail));
+email.addEventListener('input', () => {
+  emailError.innerText = validatePassword(email.value, false);
+});
 
 function noErrors() {
-  if (passwordError.innerText === '' && mailError.innerText === '') {
-    return true;
-  }
-
-  return false;
+  return passwordError.innerText === '' && emailError.innerText === '';
 }
 
 if (token) {
@@ -78,8 +37,6 @@ input.addEventListener('change', async function (event) {
   const data = document.getElementById('data-field');
 
   file = input.files[0];
-
-  //image.src = URL.createObjectURL(file);
 
   if (file.size > 5 * 1024 * 1024) {
     data.innerText = 'Kuva on liian iso';
@@ -96,18 +53,16 @@ input.addEventListener('change', async function (event) {
 });
 
 async function addDataToPage() {
-  data = await fetchUserData();
-
-  //console.log('User data:', data.avatar);
+  const data = await fetchUserData();
 
   image.src =
     'https://media2.edu.metropolia.fi/restaurant/uploads/' + data.avatar;
 
-  usernameCotainer = document.getElementById('username');
-  mailContainer = document.getElementById('mail');
+  const usernameCotainer = document.getElementById('username');
+  const emailContainer = document.getElementById('mail');
 
   usernameCotainer.innerText = data.username;
-  mailContainer.innerText = data.email;
+  emailContainer.innerText = data.email;
 }
 
 async function fetchUserData() {
@@ -200,9 +155,9 @@ async function isCreationPossible(username) {
 async function updateUserInfo() {
   const givenUsername = document.getElementById('changeUsername').value;
   const givenPassword = document.getElementById('changePassword').value;
-  const givenMail = document.getElementById('changeMail').value;
+  const givenEmail = document.getElementById('changeMail').value;
 
-  console.log(givenUsername, givenPassword, givenMail);
+  console.log(givenUsername, givenPassword, givenEmail);
 
   let updateData = {};
 
@@ -214,8 +169,8 @@ async function updateUserInfo() {
     updateData.password = givenPassword;
   }
 
-  if (givenMail !== '') {
-    updateData.email = givenMail;
+  if (givenEmail !== '') {
+    updateData.email = givenEmail;
   }
 
   let isPossible = false;
@@ -250,7 +205,7 @@ async function updateUserInfo() {
       console.log('result', json);
 
       username.value = '';
-      mail.value = '';
+      email.value = '';
       password.value = '';
     } catch (e) {
       console.log('error', e);
