@@ -1,3 +1,5 @@
+import {validateUsername, validatePassword, validateEmail} from './validation';
+
 const username = document.getElementById('registerUsername');
 const password = document.getElementById('registerPassword');
 const email = document.getElementById('registerMail');
@@ -6,68 +8,15 @@ const usernameError = document.getElementById('usernameError');
 const passwordError = document.getElementById('passwordError');
 const emailError = document.getElementById('mailError');
 
-/**
- * Checks whether the password is valid.
- * If not valid, sets errors to password error field.
- * Otherwise, clears error field.
- *
- * @param {HTMLInputElement} password - the password input element.
- *
- */
-function validatePassword(password) {
-  let error = '';
-  if (password.value.length < 5) {
-    error += ' Salasanan pitää olla ainakin 5 merkkiä pitkä ';
-  } else if (!/[a-z]/.test(password.value)) {
-    error += ' Salasanan pitää sisältää pieniä kirjaimia ';
-  } else if (!/[A-Z]/.test(password.value)) {
-    error += ' Salasanan pitää sisältää isoja kirjaimia ';
-  } else if (!/[0-9]/.test(password.value)) {
-    error += ' Salasanan pitää sisältää numeroita ';
-  } else if (!/[^a-zA-Z0-9]/.test(password.value)) {
-    error += ' Salasanan pitää sisältää erikoismerkkejä ';
-  } else {
-    error = '';
-  }
-
-  passwordError.innerText = error;
-}
-
-/**
- * Checks whether the username is given.
- * If not, sets errors to username error field.
- * Otherwise, clears error field.
- *
- * @param {HTMLInputElement} username - the username input element.
- *
- */
-function validateUsername(username) {
-  const error = username.value.length === 0 ? 'Pitää antaa käyttäjä nimi' : '';
-
-  usernameError.innerText = error;
-}
-
-/**
- * Checks whether the email is valid email.
- * If not valid, sets errors to email error field.
- * Otherwise, clears error field.
- *
- * @param {HTMLInputElement} email - the email input element.
- *
- */
-function validateMail(email) {
-  const error =
-    email.value.length <= 0 ||
-    !/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(email.value)
-      ? 'Pitää antaa kelvollinen sähköpostiosoite'
-      : '';
-
-  emailError.innerText = error;
-}
-
-password.addEventListener('input', () => validatePassword(password));
-username.addEventListener('input', () => validateUsername(username));
-email.addEventListener('input', () => validateMail(email));
+password.addEventListener('input', () => {
+  passwordError.innerText = validatePassword(password.value);
+});
+username.addEventListener('input', () => {
+  usernameError.innerText = validateUsername(username.value);
+});
+email.addEventListener('input', () => {
+  emailError.innerText = validateEmail(email.value);
+});
 
 /**
  * Check whether the error fields have any errors.
@@ -168,11 +117,15 @@ const registerForm = document.getElementById('register-form');
 registerForm.addEventListener('submit', async function (event) {
   event.preventDefault();
 
-  const registerError = document.getElementById('registerError');
+  const usernameValue = username.value;
+  const passwordValue = password.value;
+  const emailValue = email.value;
 
-  validateUsername(username);
-  validatePassword(password);
-  validateMail(email);
+  usernameError.innerText = validateUsername(usernameValue);
+  passwordError.innerText = validatePassword(passwordValue);
+  emailError.innerText = validateEmail(emailValue);
+
+  const registerError = document.getElementById('registerError');
 
   if (!noErrors()) {
     registerError.innerText = 'Pitää ensin selvittää ongelmat';
@@ -181,10 +134,6 @@ registerForm.addEventListener('submit', async function (event) {
 
   registerError.innerText = '';
 
-  const usernameValue = username.value;
-  const passwordValue = password.value;
-  const mailValue = email.value;
-
   const isPossible = await isCreationPossible(usernameValue);
 
   if (!isPossible) {
@@ -192,7 +141,7 @@ registerForm.addEventListener('submit', async function (event) {
     return;
   }
 
-  const created = await createUser(usernameValue, passwordValue, mailValue);
+  const created = await createUser(usernameValue, passwordValue, emailValue);
 
   if (!created) {
     registerError.innerText = 'Käyttäjän luominen ei onnistu';
