@@ -18,7 +18,7 @@ password.addEventListener('input', () => {
 });
 
 email.addEventListener('input', () => {
-  emailError.innerText = validatePassword(email.value, false);
+  emailError.innerText = validateEmail(email.value, false);
 });
 
 function noErrors() {
@@ -117,10 +117,6 @@ async function saveImage(file) {
       console.log('error: ', error);
       return false;
     }
-
-    //const json = await response.json();
-
-    //console.log('result: ', json);
 
     return true;
   } catch (error) {
