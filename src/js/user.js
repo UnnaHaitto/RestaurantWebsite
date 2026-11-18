@@ -1,8 +1,11 @@
-import {validateEmail, validatePassword} from './validation.js';
+import {
+  validateEmail,
+  validatePassword,
+  validateUsername,
+} from './validation.js';
 
 const image = document.getElementById('image');
 const input = document.getElementById('input');
-let file = '';
 const token = sessionStorage.getItem('token');
 
 const username = document.getElementById('changeUsername');
@@ -11,6 +14,7 @@ const email = document.getElementById('changeMail');
 
 const passwordError = document.getElementById('changePasswordError');
 const emailError = document.getElementById('changeMailError');
+const usernameError = document.getElementById('changeUsernameError');
 const errorContainer = document.getElementById('changeError');
 
 password.addEventListener('input', () => {
@@ -19,6 +23,10 @@ password.addEventListener('input', () => {
 
 email.addEventListener('input', () => {
   emailError.innerText = validateEmail(email.value, false);
+});
+
+username.addEventListener('input', () => {
+  usernameError.innerText = validateUsername(username.value, false);
 });
 
 function noErrors() {
@@ -36,7 +44,9 @@ input.addEventListener('change', async function (event) {
 
   const data = document.getElementById('data-field');
 
-  file = input.files[0];
+  const file = input.files[0];
+
+  if (!file) return;
 
   if (file.size > 5 * 1024 * 1024) {
     data.innerText = 'Kuva on liian iso';
@@ -55,8 +65,11 @@ input.addEventListener('change', async function (event) {
 async function addDataToPage() {
   const data = await fetchUserData();
 
-  image.src =
-    'https://media2.edu.metropolia.fi/restaurant/uploads/' + data.avatar;
+  const src = data.avatar
+    ? 'https://media2.edu.metropolia.fi/restaurant/uploads/' + data.avatar
+    : '../images/avatar.png';
+
+  image.src = src;
 
   const usernameCotainer = document.getElementById('username');
   const emailContainer = document.getElementById('mail');
@@ -86,11 +99,10 @@ async function fetchUserData() {
 
     const userData = await response.json();
 
-    console.log(userData);
-
     return userData;
   } catch (error) {
-    console.log(error.message);
+    console.log('Failed to fetch user data:', error);
+    throw error;
   }
 }
 
@@ -139,9 +151,6 @@ async function isCreationPossible(username) {
 
     const json = await response.json();
 
-    console.log(json);
-    console.log(json.available);
-
     return json.available;
   } catch (error) {
     console.log(error.message);
@@ -149,25 +158,17 @@ async function isCreationPossible(username) {
 }
 
 async function updateUserInfo() {
-  const givenUsername = document.getElementById('changeUsername').value;
-  const givenPassword = document.getElementById('changePassword').value;
-  const givenEmail = document.getElementById('changeMail').value;
+  const givenUsername = username.value;
+  const givenPassword = password.value;
+  const givenEmail = email.value;
 
-  console.log(givenUsername, givenPassword, givenEmail);
+  errorContainer.innerText = '';
 
   let updateData = {};
 
-  if (givenUsername !== '') {
-    updateData.username = givenUsername;
-  }
-
-  if (givenPassword !== '') {
-    updateData.password = givenPassword;
-  }
-
-  if (givenEmail !== '') {
-    updateData.email = givenEmail;
-  }
+  if (givenUsername !== '') updateData.username = givenUsername;
+  if (givenPassword !== '') updateData.password = givenPassword;
+  if (givenEmail !== '') updateData.email = givenEmail;
 
   let isPossible = false;
 
@@ -177,38 +178,42 @@ async function updateUserInfo() {
     isPossible = await isCreationPossible(givenUsername);
   }
 
-  if (isPossible) {
-    errorContainer.innerText = '';
-
-    const data = {
-      body: JSON.stringify(updateData),
-      method: 'PUT',
-      headers: {
-        Authorization: 'Bearer ' + token,
-        'Content-Type': 'application/json',
-      },
-    };
-
-    try {
-      const response = await fetch(
-        'https://media2.edu.metropolia.fi/restaurant/api/v1/users',
-        data
-      );
-
-      if (!response.ok) throw new Error('Invalid input!');
-
-      const json = await response.json();
-      console.log('result', json);
-
-      username.value = '';
-      email.value = '';
-      password.value = '';
-    } catch (e) {
-      console.log('error', e);
-      errorContainer.innerText = 'Käyttäjän tietojen päivittäminen epäonnistui';
-    }
-  } else {
+  if (!isPossible) {
     errorContainer.innerText = 'Käyttäjänimi ei ole vapaana';
+    return;
+  }
+
+  const data = {
+    body: JSON.stringify(updateData),
+    method: 'PUT',
+    headers: {
+      Authorization: 'Bearer ' + token,
+      'Content-Type': 'application/json',
+    },
+  };
+
+  try {
+    const response = await fetch(
+      'https://media2.edu.metropolia.fi/restaurant/api/v1/users',
+      data
+    );
+
+    if (!response.ok) {
+      const error = await response.text();
+
+      console.error('Error updating user info:', response.status, error);
+
+      return false;
+    }
+
+    username.value = '';
+    email.value = '';
+    password.value = '';
+    return true;
+  } catch (e) {
+    console.log('error', e);
+    errorContainer.innerText = 'Käyttäjän tietojen päivittäminen epäonnistui';
+    return false;
   }
 }
 
@@ -218,9 +223,11 @@ changeButton.addEventListener('click', async function (event) {
   event.preventDefault();
 
   if (noErrors()) {
-    await updateUserInfo();
+    const updated = await updateUserInfo();
 
-    await addDataToPage();
+    if (updated) {
+      await addDataToPage();
+    }
   } else {
     errorContainer.innerText = 'Selvitä ensin kaikki ongelmat';
   }
