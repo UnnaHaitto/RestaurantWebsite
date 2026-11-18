@@ -7,6 +7,14 @@ let currentPage = 1;
 const restaurantAmount = 4;
 
 // Fetches restaurants and sorts them based on the their distance from the user
+/**
+ * Sorts the restaurants by their closeness to the users coordinates.
+ *
+ * @param {String} userLat - The users latitude.
+ * @param {String} userLong - The users longitude.
+ *
+ * @returns {Integer} - Is the restaurant comparably closer or further.
+ */
 async function sortRestaurants(userLat, userLong) {
   await fetchRestaurants();
 
