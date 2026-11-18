@@ -34,7 +34,15 @@ export function validatePassword(password, required = true) {
  * @returns {String} An error message or an empty string if the username is valid.
  */
 export function validateUsername(username) {
-  return username.length === 0 ? 'Pitää antaa käyttäjä nimi' : '';
+  if (username.length === 0) {
+    return 'Pitää antaa käyttäjä nimi';
+  }
+
+  if (username.length < 3) {
+    return ' Käyttäjänimen tulee olla ainakin 3 merkkiä pitkä. ';
+  }
+
+  return '';
 }
 
 /**
