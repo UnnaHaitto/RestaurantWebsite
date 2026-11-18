@@ -1,6 +1,14 @@
-const loginButton = document.getElementById('login-button');
+const loginForm = document.getElementById('login-form');
 
-loginButton.addEventListener('click', async function (event) {
+/**
+ * Listens for the submit event of the login form.
+ * Prevents the default form submission and calls the login function with the user's input data.
+ * Redirects the user to the user page if the login succeeds.
+ * Otherwise, displays error message.
+ *
+ * @param {SubmitEvent} event - the form submission event object.
+ */
+loginForm.addEventListener('submit', async function (event) {
   event.preventDefault();
 
   const username = document.getElementById('loginUsername').value;
@@ -20,7 +28,7 @@ loginButton.addEventListener('click', async function (event) {
  *
  * @param {string} username - the users given username.
  * @param {string} password - the users given password.
- * @returns {Promise<Object>} - the logged in users data.
+ * @returns {Promise<Boolean>} - wether the login was successfull.
  */
 async function login(username, password) {
   const data = {
