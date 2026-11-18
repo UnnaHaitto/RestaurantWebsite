@@ -1,16 +1,19 @@
 export let restaurants = [];
 
-// Stores fetched promise so the restaurants have to be fetched only once
+// Caches the fetch promise to prevent unnecessary API requests.
 let restaurantPromise = null;
 
-// Fetches the restaurants from the API
+/**
+ * Fetches all restaurants from the REST API.
+ * Caches the promise to avoid duplicate requests.
+ *
+ * @returns {Promise<Array>} The fetched restaurants.
+ */
 export async function fetchRestaurants() {
-  // If restaurants are already fetched or are being fetched it returns them
   if (restaurantPromise) {
     return restaurantPromise;
   }
 
-  // Creates and stores a promise for fetching the restaurants
   restaurantPromise = (async () => {
     try {
       const response = await fetch(
@@ -27,9 +30,9 @@ export async function fetchRestaurants() {
     } catch (error) {
       restaurantPromise = null;
       console.log(error.message);
+      throw error;
     }
   })();
 
-  // returns the promise containing the fetched restaurants
   return restaurantPromise;
 }
