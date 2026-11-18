@@ -6,8 +6,16 @@ const usernameError = document.getElementById('usernameError');
 const passwordError = document.getElementById('passwordError');
 const mailError = document.getElementById('mailError');
 
+/**
+ * Checks whether the password is valid.
+ * If not valid, sets errors to password error field.
+ * Otherwise, clears error field.
+ *
+ * @param {string} password - the users input password.
+ *
+ */
 function validatePassword(password) {
-  html = '';
+  let html = '';
   if (password.value.length < 5) {
     html += ' Salasanan pitää olla ainakin 5 merkkiä pitkä ';
   } else if (!/[a-z]/.test(password.value)) {
@@ -25,8 +33,16 @@ function validatePassword(password) {
   passwordError.innerText = html;
 }
 
+/**
+ * Checks whether the username is given.
+ * If not, sets errors to username error field.
+ * Otherwise, clears error field.
+ *
+ * @param {string} username - the users input username.
+ *
+ */
 function validateUsername(username) {
-  html = '';
+  let html = '';
   if (username.value.length <= 0) {
     html += 'Pitää antaa käyttäjä nimi';
   } else {
@@ -36,8 +52,16 @@ function validateUsername(username) {
   usernameError.innerText = html;
 }
 
+/**
+ * Checks whether the email is valid email.
+ * If not valid, sets errors to email error field.
+ * Otherwise, clears error field.
+ *
+ * @param {string} mail - the users input email.
+ *
+ */
 function validateMail(mail) {
-  html = '';
+  let html = '';
   if (
     mail.value.length <= 0 ||
     !/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(mail.value)
@@ -54,6 +78,9 @@ password.addEventListener('input', () => validatePassword(password));
 username.addEventListener('input', () => validateUsername(username));
 mail.addEventListener('input', () => validateMail(mail));
 
+/**
+ * Check whether the error fields have any errors.
+ */
 function noErrors() {
   if (
     usernameError.innerText === '' &&
@@ -66,6 +93,42 @@ function noErrors() {
   return false;
 }
 
+/**
+ * Checks whether the username is available.
+ *
+ * @param {string} username - the users input username.
+ *
+ * @returns {Promise<Boolean>} - wether the username is available.
+ */
+async function isCreationPossible(username) {
+  try {
+    const response = await fetch(
+      'https://media2.edu.metropolia.fi/restaurant/api/v1/users/available/' +
+        username
+    );
+
+    if (!response.ok) {
+      console.log('User availability check failed!');
+      return false;
+    }
+
+    const json = await response.json();
+
+    return json.available;
+  } catch (error) {
+    console.log(error.message);
+  }
+}
+
+/**
+ * Posts the user data to the REST API users.
+ *
+ * @param {string} username - the users given username.
+ * @param {string} password - the users given password.
+ * @param {string} mail - the users given email.
+ *
+ * @returns {Promise<Boolean>} - whether the login was successfull.
+ */
 async function createUser(username, password, mail) {
   const data = {
     body: JSON.stringify({
@@ -87,13 +150,13 @@ async function createUser(username, password, mail) {
 
     if (!response.ok) {
       const error = await response.json();
-      console.log('error: ', error);
-      throw new Error('Unable to create user!');
+      console.log('Registration failed:', error);
+      return false;
     }
 
-    const json = await response.json();
+    const userData = await response.json();
 
-    console.log('result: ', json);
+    console.log('result: ', userData);
 
     return true;
   } catch (error) {
@@ -103,34 +166,21 @@ async function createUser(username, password, mail) {
   }
 }
 
-async function isCreationPossible(username) {
-  try {
-    const response = await fetch(
-      'https://media2.edu.metropolia.fi/restaurant/api/v1/users/available/' +
-        username
-    );
+const registerForm = document.getElementById('register-form');
 
-    if (!response.ok) {
-      throw new Error('User availability check failed!');
-    }
-
-    const json = await response.json();
-
-    console.log(json);
-    console.log(json.available);
-
-    return json.available;
-  } catch (error) {
-    console.log(error.message);
-  }
-}
-
-const registerButton = document.getElementById('register-button');
-
-registerButton.addEventListener('click', async function (event) {
+/**
+ * Listens for the submit event of the register form.
+ * Checks whether there are errors.
+ * If not, checks if the username is available.
+ * If it is, tries creating the user and moving them to login.
+ * Else shows appropriate error messages.
+ *
+ * @param {SubmitEvent} event - the form submission event object.
+ */
+registerForm.addEventListener('submit', async function (event) {
   event.preventDefault();
 
-  registerError = document.getElementById('registerError');
+  const registerError = document.getElementById('registerError');
 
   validateUsername(username);
   validatePassword(password);
@@ -142,8 +192,6 @@ registerButton.addEventListener('click', async function (event) {
     const usernameValue = document.getElementById('registerUsername').value;
 
     const isPossible = await isCreationPossible(usernameValue);
-
-    console.log(isPossible);
 
     if (isPossible) {
       const passwordValue = document.getElementById('registerPassword').value;
