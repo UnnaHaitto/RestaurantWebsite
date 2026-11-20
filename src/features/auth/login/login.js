@@ -1,3 +1,3 @@
-import {handleLogin} from './login-controller';
+import {handleLogin} from './login-controller.js';
 
 handleLogin();
