@@ -1,0 +1,704 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family:
+    times new roman,
+    sans-serif;
+}
+
+.error {
+  color: red;
+}
+
+.sidebar li a {
+  cursor: pointer;
+}
+
+.like-button {
+  color: red;
+  cursor: pointer;
+}
+
+#map {
+  height: 100dvh;
+  width: 100dvw;
+}
+
+#map-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 70%;
+  margin: auto;
+}
+
+section {
+  display: none;
+}
+
+section:target {
+  display: block;
+}
+
+main {
+  padding: 20px;
+  width: 100%;
+  background-color: #f4f4f4;
+}
+
+main h1 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #047c58;
+}
+
+#user-text {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #047c58;
+  padding-top: 40px;
+}
+
+footer {
+  background-color: #047c58;
+  color: white;
+  text-align: center;
+  padding: 10px;
+}
+
+header {
+  background-color: #047c58;
+  color: white;
+  padding: 10px;
+}
+
+.header-nav ul {
+  display: flex;
+  justify-content: space-around;
+  list-style-type: none;
+  padding-bottom: 10px;
+  padding-top: 20px;
+}
+
+.header-nav a {
+  color: white;
+  text-decoration: none;
+  margin-left: 15px;
+}
+
+#login-container {
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  width: 20%;
+  background-color: #fffefe;
+  padding: 20px;
+  border: solid 2px black;
+}
+
+#login-container label {
+  padding: 5px;
+}
+
+#login-button {
+  margin-top: 10px;
+  font-size: 18px;
+}
+
+#login-form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+#login-form a {
+  padding-top: 10px;
+  color: #047c58;
+}
+
+#register-container {
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  width: 20%;
+  background-color: #fffefe;
+  padding: 20px;
+  border: solid 2px black;
+}
+
+#register-container label {
+  padding: 5px;
+}
+
+#register-button {
+  margin-top: 10px;
+  font-size: 18px;
+}
+
+#register-form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+#register-form a {
+  padding-top: 10px;
+  color: #047c58;
+}
+
+.food-container {
+  padding-bottom: 20px;
+  padding-top: 20px;
+  width: 100%;
+  border-top: 1px solid #047c58;
+}
+
+.food-data-container {
+  margin-bottom: 5px;
+}
+
+.food-data-container p {
+  margin-right: 10px;
+  padding-bottom: 10px;
+}
+
+#image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+#image-container {
+  clip-path: circle(50%);
+  aspect-ratio: 1/1;
+  width: 50%;
+}
+
+#userPage-container {
+  display: flex;
+}
+
+.sidebar-container {
+  background-color: #d9faf3;
+  border-right: solid 1px #047c58;
+  display: flex;
+  flex-direction: column;
+  flex: 2;
+}
+
+.sidebar-container h2 {
+  border-top: solid 1px #047c58;
+}
+
+.sidebar-container a {
+  text-decoration: none;
+  color: black;
+}
+
+.sidebar-container li {
+  padding-bottom: 20px;
+}
+
+.sidebar-profile {
+  display: flex;
+  align-items: center;
+  padding: 20px;
+}
+
+.sidebar-profile h3 {
+  margin: 10px;
+}
+
+#settings-toggle {
+  opacity: 0;
+  position: absolute;
+}
+
+#favourites-toggle {
+  opacity: 0;
+  position: absolute;
+}
+
+.sidebar ul {
+  list-style: none;
+}
+
+.sidebar a {
+  padding-left: 20px;
+}
+
+.sidebar h2 {
+  padding-left: 20px;
+  padding-top: 10px;
+}
+
+.sidebar li button {
+  margin-left: 20px;
+  padding: 5px;
+  padding-left: 0%;
+  background: none;
+  border: none;
+}
+
+.content {
+  flex: 8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+#favourite-foods {
+  height: 100%;
+  width: 100%;
+}
+
+#favourite-food-h2 {
+  text-align: center;
+  padding: 20px;
+}
+
+#user-favourite-food-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
+}
+
+#user-favourite-foods-container {
+  padding: 20px;
+  width: 100%;
+  background-color: #f4f4f4;
+  height: 100%;
+}
+
+#input {
+  font-size: 15px;
+}
+
+#user-info-form {
+  display: flex;
+  flex-direction: column;
+}
+
+#user-info-form label {
+  margin-bottom: 10px;
+  margin-top: 10px;
+  font-size: 18px;
+}
+
+#user-info-form button {
+  margin-top: 10px;
+  font-size: 18px;
+}
+
+#daily-menu-container {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 20px;
+}
+
+#weekly-menu-container {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 20px;
+}
+
+#weekly-menu-container label {
+  display: none;
+}
+
+#weekly-menu-container h2 {
+  color: #047c58;
+  margin-bottom: 10px;
+}
+
+#day-menu-toggle {
+  opacity: 0;
+  position: absolute;
+}
+
+.menu {
+  display: none;
+}
+
+.show-menu {
+  display: block;
+}
+
+#daily-food-items-container {
+  padding: 20px;
+  border-top: 1px solid #047c58;
+  text-align: center;
+}
+
+.food-items-container {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  text-align: center;
+}
+
+#day-container {
+  margin-bottom: 20px;
+}
+
+#day-container a {
+  text-decoration: none;
+  color: #047c58;
+  margin-right: 10px;
+  border-right: solid 1px #047c58;
+  padding-right: 10px;
+}
+
+#day-container a:last-child {
+  border-right: none;
+  padding-right: 0;
+}
+
+.restaurant-menu-info {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.restaurant-menu-info h1:first-child {
+  padding-right: 20px;
+  border-right: solid 1px #047c58;
+}
+
+.restaurant-menu-info h1:last-child {
+  padding-left: 20px;
+}
+
+.pagination {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.pagination a {
+  margin: 10px;
+  text-decoration: none;
+  color: #047c58;
+}
+
+.active {
+  font-weight: bold;
+}
+
+.restaurants {
+  width: calc(50% - 20px);
+  background-color: white;
+  padding: 20px;
+}
+
+.restarants img {
+  width: 100%;
+  object-fit: cover;
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 10px;
+}
+
+.restaurant-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
+}
+
+.food-image-container {
+  width: 100%;
+}
+
+.food-image-container img {
+  width: 100%;
+  object-fit: cover;
+}
+
+.like-button {
+  font-size: 30px;
+}
+
+.restaurant-menu-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.restaurant-menu-container a {
+  color: black;
+}
+
+.restaurant-info-container {
+  display: flex;
+  padding-top: 30px;
+}
+
+.restaurant-info-container p:first-child {
+  border-right: solid 1px #047c58;
+  padding-right: 20px;
+}
+
+.restaurant-info-container p:last-child {
+  padding-left: 20px;
+}
+
+.burger-menu {
+  display: none;
+}
+
+@media screen and (max-width: 1250px) {
+  .sidebar-profile {
+    display: inline-block;
+  }
+
+  .sidebar-profile h3 {
+    text-align: center;
+  }
+
+  #image-container {
+    width: 100%;
+  }
+
+  #user-text {
+    font-size: 25px;
+  }
+
+  #login-container {
+    width: 30%;
+  }
+
+  #register-container {
+    width: 30%;
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  #login-container {
+    width: 50%;
+  }
+
+  #register-container {
+    width: 50%;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  #map-container {
+    width: 100%;
+  }
+
+  #map {
+    height: 100dvh;
+    width: 100dvh;
+  }
+}
+
+@media screen and (max-width: 850px) {
+  p {
+    font-size: 20px;
+  }
+
+  #user-favourite-food-container {
+    display: inline-block;
+  }
+
+  .restaurants {
+    margin-top: 20px;
+    width: 100%;
+  }
+
+  .pagination {
+    font-size: 20px;
+  }
+
+  header h1 {
+    text-align: center;
+  }
+
+  .header-nav {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+  }
+
+  .header-nav ul {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .header-nav ul li {
+    font-size: 25px;
+  }
+
+  #login-container {
+    width: 90%;
+  }
+
+  #register-container {
+    width: 90%;
+  }
+
+  .burger-menu {
+    display: block;
+    text-align: center;
+    font-size: 30px;
+  }
+
+  #menu {
+    opacity: 0;
+    position: absolute;
+  }
+
+  .header-nav ul {
+    padding-top: 10px;
+    display: none;
+  }
+
+  .header-nav:has(#menu:checked) ul {
+    display: block;
+  }
+
+  .sidebar-container {
+    display: inline-block;
+    flex: initial;
+  }
+
+  .sidebar-container li {
+    font-size: 20px;
+  }
+
+  .sidebar-container li button {
+    font-size: 20px;
+  }
+
+  .sidebar-profile {
+    display: flex;
+    flex-direction: column;
+  }
+
+  #loginUsername,
+  #registerUsername {
+    font-size: 30px;
+  }
+
+  #loginPassword,
+  #registerPassword {
+    font-size: 30px;
+  }
+
+  #registerMail {
+    font-size: 30px;
+  }
+
+  #user-info-form {
+    font-size: 30px;
+  }
+
+  #image-container {
+    width: 40%;
+  }
+
+  .content {
+    flex: initial;
+  }
+
+  section {
+    padding: 40px;
+  }
+
+  #userPage-container {
+    display: block;
+  }
+
+  #user-favourite-foods-container {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+  }
+
+  #favourite-foods {
+    padding: 0%;
+  }
+
+  .sidebar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-top: 1px solid #047c58;
+  }
+
+  .sidebar ul li {
+    text-align: center;
+  }
+
+  .sidebar-container h2 {
+    border: none;
+  }
+
+  .sidebar ul:has(#settings-toggle:checked) .settings-item {
+    display: list-item;
+  }
+
+  .sidebar ul:has(#favourites-toggle:checked) .favourites-item {
+    display: list-item;
+  }
+
+  .settings-item,
+  .favourites-item {
+    display: none;
+  }
+
+  .restaurant-menu-container a {
+    font-size: 20px;
+    padding-top: 10px;
+  }
+
+  .pagination a {
+    margin: 5px;
+    font-size: 20px;
+  }
+}
+
+@media screen and (max-width: 650px) {
+  #day-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: fit-content;
+    display: none;
+  }
+
+  #day-container a {
+    border: none;
+    font-size: 20px;
+  }
+
+  .menu {
+    padding-top: 20px;
+  }
+
+  #weekly-menu-container label {
+    display: block;
+    color: #047c58;
+  }
+
+  #day-menu-toggle:checked ~ #day-container {
+    display: flex;
+  }
+
+  #day-container a {
+    padding: 0;
+    margin: 0;
+  }
+}
+
+/*viikon menun päiväykset 650px kohdalla burgeri valikoksi*/
