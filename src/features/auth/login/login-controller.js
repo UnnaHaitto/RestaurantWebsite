@@ -3,9 +3,9 @@ import {
   getLoginInput,
   showError,
   clearError,
-} from './login-view';
+} from './login-view.js';
 
-import {login} from './login-model';
+import {login} from './login-model.js';
 
 /**
  * Handles the login form submission.
