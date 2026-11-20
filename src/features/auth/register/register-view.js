@@ -9,6 +9,11 @@ const emailError = document.getElementById('mailError');
 const registerForm = document.getElementById('register-form');
 const registerError = document.getElementById('registerError');
 
+/**
+ * Gets the values from the registration form.
+ *
+ * @returns {Object} - Input user data.
+ */
 function getRegisterInput() {
   return {
     username: username.value,
@@ -17,16 +22,31 @@ function getRegisterInput() {
   };
 }
 
+/**
+ * Dsiplays validation errors.
+ *
+ * @param {Object} errors - The validation errors for the fields.
+ */
 function showValidationErrors(errors) {
   usernameError.innerText = errors.username;
   passwordError.innerText = errors.password;
   emailError.innerText = errors.email;
 }
 
+/**
+ * Displays the general registeration error.
+ *
+ * @param {String} message - The registration error message.
+ */
 function showRegisterError(message) {
   registerError.innerText = message;
 }
 
+/**
+ * Adds input event listeners.
+ *
+ * @param {Function} handler
+ */
 function bindInputEvents(handler) {
   username.addEventListener('input', () => {
     handler('username', username.value);
@@ -41,6 +61,11 @@ function bindInputEvents(handler) {
   });
 }
 
+/**
+ * Adds submit event listeners.
+ *
+ * @param {Function} handler
+ */
 function bindRegisterSubmit(handler) {
   registerForm.addEventListener('submit', handler);
 }
