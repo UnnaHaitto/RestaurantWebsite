@@ -16,6 +16,12 @@ import {
   bindRegisterSubmit,
 } from './register-view.js';
 
+/**
+ * Handles validation when the user types.
+ *
+ * @param {String} field - The name of the field being validated.
+ * @param {String} value - The current input value of the field.
+ */
 function handleInput(field, value) {
   const validators = {
     username: validateUsername,
@@ -32,6 +38,12 @@ function handleInput(field, value) {
   });
 }
 
+/**
+ * Validates all registration fields.
+ *
+ * @param {Object} input - The registration form input values.
+ * @returns {boolean} - If all registration fields are valid.
+ */
 function validateRegisteration(input) {
   const errors = {
     username: validateUsername(input.username),
@@ -46,6 +58,11 @@ function validateRegisteration(input) {
   );
 }
 
+/**
+ * Handles registration form submission.
+ *
+ * @param {SubmitEvent} event - Registration form submit event.
+ */
 async function handleRegister(event) {
   event.preventDefault();
 
@@ -75,6 +92,9 @@ async function handleRegister(event) {
   location.href = '../../../../public/login.html';
 }
 
+/**
+ * Initializes registration functionality.
+ */
 function initRegisterController() {
   bindInputEvents(handleInput);
   bindRegisterSubmit(handleRegister);
