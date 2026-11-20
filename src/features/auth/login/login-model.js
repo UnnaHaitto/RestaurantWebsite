@@ -1,4 +1,4 @@
-import {apiUrl} from '../../../shared/api/api';
+import {apiUrl} from '../../../shared/api/api.js';
 
 /**
  * Logs in the user through the REST API.
