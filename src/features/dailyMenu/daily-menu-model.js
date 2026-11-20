@@ -1,7 +1,7 @@
 import {apiUrl} from '../../shared/api/api.js';
 
 /**
- * Fetches the daily menu for a restaurant from the REST API.
+ * Fetches the daily menu of a restaurant from the REST API.
  *
  * @param {string} restaurantId - the ID of the restaurant.
  * @returns {Promise<Object>} - the restaurant's daily menu.
