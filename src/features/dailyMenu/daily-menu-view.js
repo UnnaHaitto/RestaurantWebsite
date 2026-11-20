@@ -1,9 +1,19 @@
+/**
+ * Displays the selected restaurant's name.
+ *
+ * @param {String} restaurantName - The name of the selected restaurant.
+ */
 const displayRestaurantName = (restaurantName) => {
   const h1Container = document.querySelector('.restaurant-name');
 
   h1Container.innerText = restaurantName;
 };
 
+/**
+ * Dsiplays the daily menu.
+ *
+ * @param {Object} dailyMenu - The daily menu data.
+ */
 const displayDailyMenu = (dailyMenu) => {
   const menuContainer = document.querySelector('#daily-menu-container');
 
