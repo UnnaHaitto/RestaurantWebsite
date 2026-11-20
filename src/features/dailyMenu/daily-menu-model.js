@@ -1,4 +1,4 @@
-import {apiUrl} from '../../shared/api/api';
+import {apiUrl} from '../../shared/api/api.js';
 
 /**
  * Fetches the daily menu for a restaurant from the REST API.
