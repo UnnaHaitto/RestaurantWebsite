@@ -20,7 +20,7 @@ function handleLogin() {
 
     if (success) {
       clearError();
-      location.href = './userPage.html';
+      location.href = '../../../../public/userPage.html';
     } else {
       showError('Kirjautuminen epäonnistui');
     }
