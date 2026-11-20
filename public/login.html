@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="../src/features/auth/login/login.js" defer></script>
+    <link rel="stylesheet" href="./css/style.css" />
+    <title>Login page</title>
+  </head>
+  <body>
+    <header>
+      <h1>Ravintola listaaja</h1>
+      <nav class="header-nav">
+        <div class="burger-menu">
+          <label for="menu" tabindex="0"> ☰ </label>
+          <input id="menu" type="checkbox" />
+        </div>
+        <ul>
+          <li><a href="../pages/main.html">Koti</a></li>
+          <li><a href="../pages/map.html">Ravintolat kartalla</a></li>
+          <li><a href="../pages/login.html">Kirjaudu sisään</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <div id="login-container">
+        <h1>Kirjaudu sisään</h1>
+        <form id="login-form">
+          <label for="loginUsername">Käyttäjänimi:</label>
+          <input type="text" id="loginUsername" name="username" required />
+          <label for="loginPassword">Salasana:</label>
+          <input type="password" id="loginPassword" name="password" required />
+          <a href=""></a>
+          <button id="login-button">Kirjaudu sisään</button>
+          <p id="loginError" class="error"></p>
+          <a href="./register.html">
+            Etkö omista vielä käyttäjää? Rekisteröidy.
+          </a>
+        </form>
+      </div>
+    </main>
+
+    <footer>
+      <p>&copy; 2026 Ravintola Listaaja. Kaikki oikeudet pidätetään.</p>
+    </footer>
+  </body>
+</html>

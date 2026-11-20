@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./css/style.css" />
+    <script src="../src/features/dailyMenu/dailyMenu.js" defer></script>
+    <title>Daily Menu</title>
+  </head>
+  <body>
+    <header>
+      <h1>Ravintola listaaja</h1>
+      <nav class="header-nav">
+        <div class="burger-menu">
+          <label for="menu" tabindex="0"> ☰ </label>
+          <input id="menu" type="checkbox" />
+        </div>
+        <ul>
+          <li><a href="../pages/main.html">Koti</a></li>
+          <li><a href="../pages/map.html">Ravintolat kartalla</a></li>
+          <li><a href="../pages/login.html">Kirjaudu sisään</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <div class="restaurant-menu-info">
+        <h1>Päivän menu</h1>
+        <h1 class="restaurant-name">Ravintolan nimi</h1>
+      </div>
+      <div id="daily-menu-container"></div>
+    </main>
+
+    <footer>
+      <p>&copy; 2026 Ravintola Listaaja. Kaikki oikeudet pidätetään.</p>
+    </footer>
+  </body>
+</html>
