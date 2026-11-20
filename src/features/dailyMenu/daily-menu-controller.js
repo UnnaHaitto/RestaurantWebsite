@@ -1,4 +1,4 @@
-import {getDailyMenu} from './daily-menu-model';
+import {getDailyMenu} from './daily-menu-model.js';
 
 import {displayDailyMenu, displayRestaurantName} from './daily-menu-view';
 
