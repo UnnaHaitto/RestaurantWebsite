@@ -1,4 +1,4 @@
-import {createMenu} from './daily-menu-controller';
+import {createMenu} from './daily-menu-controller.js';
 
 const parameters = location.search.split('&');
 
