@@ -3,9 +3,9 @@ import {apiUrl} from '../../../shared/api/api.js';
 /**
  * Posts the user data to the REST API users.
  *
- * @param {string} username - the users given username.
- * @param {string} password - the users given password.
- * @param {string} email - the users given email.
+ * @param {string} username - The input username.
+ * @param {string} password - The input password.
+ * @param {string} email - The input email.
  *
  * @returns {Promise<Boolean>} - whether the login was successfull.
  */
