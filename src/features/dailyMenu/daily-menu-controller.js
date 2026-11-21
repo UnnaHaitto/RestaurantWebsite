@@ -1,6 +1,6 @@
 import {getDailyMenu} from './daily-menu-model.js';
 
-import {displayDailyMenu, displayRestaurantName} from './daily-menu-view';
+import {displayDailyMenu, displayRestaurantName} from './daily-menu-view.js';
 
 /**
  * Creates and displays the daily menu for a restaurant.
