@@ -8,7 +8,7 @@ import {apiUrl} from '../../shared/api/api.js';
  */
 async function getDailyMenu(restaurantId) {
   const response = await fetch(
-    apiUrl + '/api/v1/restaurants/daily/' + restaurantId + '/fi'
+    apiUrl + '/restaurants/daily/' + restaurantId + '/fi'
   );
 
   if (!response.ok) {
