@@ -19,6 +19,11 @@ const displayDailyMenu = (dailyMenu) => {
 
   let html = '';
 
+  if (dailyMenu.courses.length === 0) {
+    menuContainer.innerHTML = '<h1>Ei päivän menua.</h1>';
+    return;
+  }
+
   for (let i = 0; i < dailyMenu.courses.length; i++) {
     html +=
       '<div id="daily-food-items-container" class="food-items-container">';
