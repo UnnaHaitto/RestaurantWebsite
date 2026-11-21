@@ -28,8 +28,6 @@ async function addDataToPage() {
   try {
     const userData = await fetchUserData(token);
 
-    console.log(userData);
-
     displayUserData(userData);
   } catch (error) {
     console.log('Failed to fetch user data: ', error);
