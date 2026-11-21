@@ -1,4 +1,7 @@
-import {restaurants, fetchRestaurants} from './restaurantFetch.js';
+import {
+  restaurants,
+  fetchRestaurants,
+} from '../shared/restaurantFetch/restaurantFetch.js';
 
 /**
  * Fetches all restaurants and displays them on a map.
