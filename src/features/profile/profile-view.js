@@ -34,8 +34,8 @@ function displayUserData(userData) {
 
   elements.image.src = avatar;
 
-  elements.usernameCotainer.innerText = data.username;
-  elements.emailContainer.innerText = data.email;
+  elements.usernameCotainer.innerText = userData.username;
+  elements.emailContainer.innerText = userData.email;
 }
 
 /**
