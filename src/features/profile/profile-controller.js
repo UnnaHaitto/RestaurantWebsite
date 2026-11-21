@@ -2,9 +2,9 @@ import {
   validateEmail,
   validatePassword,
   validateUsername,
-} from '../../shared/validation/validation';
+} from '../../shared/validation/validation.js';
 
-import {fetchUserData, saveImage, updateUserInfo} from './profile-model';
+import {fetchUserData, saveImage, updateUserInfo} from './profile-model.js';
 
 import {
   elements,
@@ -16,10 +16,10 @@ import {
   getUserInput,
   clearError,
   clearUserInput,
-} from './profile-view';
+} from './profile-view.js';
 
 // Get the user's authentication token.
-const token = localStorage.getItem('token');
+const token = sessionStorage.getItem('token');
 
 /**
  * Fetches user data and displays it on the user page.
@@ -27,6 +27,8 @@ const token = localStorage.getItem('token');
 async function addDataToPage() {
   try {
     const userData = await fetchUserData(token);
+
+    console.log(userData);
 
     displayUserData(userData);
   } catch (error) {
