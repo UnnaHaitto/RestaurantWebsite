@@ -1,3 +1,3 @@
-import {profileController} from './profile-controller';
+import {profileController} from './profile-controller.js';
 
 profileController();
