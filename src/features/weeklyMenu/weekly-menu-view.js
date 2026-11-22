@@ -7,7 +7,9 @@ function setRestaurantName(name) {
 function setMonth(month) {
   const monthContainer = document.querySelector('.month');
 
-  monthContainer.innerText = month;
+  month !== ''
+    ? (monthContainer.innerText = month)
+    : (monthContainer.innerHTML = '<h1>Ei voitu hakea kuukautta</h1>');
 }
 
 function createDayNavigation(weeklyMenuItems, onDayClick) {
@@ -16,7 +18,7 @@ function createDayNavigation(weeklyMenuItems, onDayClick) {
   let days = ['maanantai', 'tiistai', 'keskiviikko', 'torstai', 'perjantai'];
 
   for (let i = 0; i < days.length; i++) {
-    const date = '';
+    let date = '';
 
     days[i] in weeklyMenuItems
       ? (date = weeklyMenuItems[days[i]].date.split('.')[0] + '.')
@@ -41,8 +43,9 @@ function createDayNavigation(weeklyMenuItems, onDayClick) {
 function createMenu(day, weeklyMenuItems) {
   let foodItemCotainer = document.querySelector('.food-items-container');
 
-  if (!weeklyMenuItems) {
-    foodItemCotainer = '<h1>Ei menua saatavilla</h1>';
+  if (Object.keys(weeklyMenuItems).length === 0) {
+    foodItemCotainer.innerHTML = '<h1>Ei menua saatavilla</h1>';
+    return;
   }
 
   foodItemCotainer.innerHTML = '';
