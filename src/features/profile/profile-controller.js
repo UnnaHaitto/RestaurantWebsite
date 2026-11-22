@@ -4,10 +4,16 @@ import {
   validateUsername,
 } from '../../shared/validation/validation.js';
 
-import {fetchUserData, saveImage, updateUserInfo} from './profile-model.js';
+import {
+  fetchRestaurantById,
+  fetchUserData,
+  saveImage,
+  updateUserInfo,
+} from './profile-model.js';
 
 import {
   elements,
+  displayRestaurant,
   displayUserData,
   displayError,
   displayImageMessage,
@@ -16,12 +22,30 @@ import {
   getUserInput,
   clearError,
   clearUserInput,
+  bindMenuEvents,
 } from './profile-view.js';
 
 import {createHeader} from '../../shared/headerController/header-controller.js';
 
 // Get the user's authentication token.
 const token = sessionStorage.getItem('token');
+
+async function addFavouriteRestaurantToPage() {
+  try {
+    const favouriteRestaurant = sessionStorage.getItem('liked-restaurant');
+
+    if (!favouriteRestaurant) {
+      displayRestaurant('');
+      return;
+    }
+
+    let restaurant = await fetchRestaurantById(favouriteRestaurant);
+
+    displayRestaurant(restaurant);
+  } catch (error) {
+    console.log('Failed to fetch favourite restaurant: ', error);
+  }
+}
 
 /**
  * Fetches user data and displays it on the user page.
@@ -138,6 +162,22 @@ async function handleUserUpdate(event) {
 }
 
 /**
+ *
+ * @param {String} type - The type of the selected element.
+ * @param {number} restaurantId - The id of the selected restaurant.
+ * @param {String} restaurantName - The name of the selected restaurant.
+ */
+function handleMenuNavigation(type, restaurantId, restaurantName) {
+  const page =
+    type === 'daily'
+      ? '../../../public/dailyMenu.html'
+      : '../../../public/weeklyMenu.html';
+
+  location.href =
+    page + '?id=' + restaurantId + '&restaurantName=' + restaurantName;
+}
+
+/**
  * Logs out the user and redirects them to main page.
  */
 function logout() {
@@ -145,7 +185,7 @@ function logout() {
   window.location.href = '../../../public/main.html';
 }
 
-function profileController() {
+async function profileController() {
   createHeader();
 
   if (!token) {
@@ -153,7 +193,11 @@ function profileController() {
     return;
   }
 
-  addDataToPage();
+  await addDataToPage();
+
+  await addFavouriteRestaurantToPage();
+
+  bindMenuEvents(handleMenuNavigation);
 
   elements.input.addEventListener('change', handleImageUpload);
 
