@@ -103,8 +103,8 @@ function initRestaurantController() {
 
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(
-      handleLocationError,
-      handleLocationSuccess
+      handleLocationSuccess,
+      handleLocationError
     );
   } else {
     handleLocationError({
