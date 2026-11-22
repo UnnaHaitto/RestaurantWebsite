@@ -65,9 +65,10 @@ function createDefaultMenu() {
 function displayMonth() {
   let apiMonth = '';
 
-  Object.keys(weeklyMenuItems).length === 0
-    ? (apiMonth = '')
-    : weeklyMenuItems['maanantai'].date.split('. ')[1];
+  apiMonth =
+    Object.keys(weeklyMenuItems).length === 0
+      ? ''
+      : weeklyMenuItems['maanantai'].date.split('. ')[1];
 
   const month = getMonth(apiMonth);
 
