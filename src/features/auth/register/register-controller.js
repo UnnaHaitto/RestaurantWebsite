@@ -84,7 +84,7 @@ async function handleRegister(event) {
     return;
   }
 
-  const created = createUser(input.username, input.password, input.email);
+  const created = await createUser(input.username, input.password, input.email);
 
   if (!created) {
     showRegisterError('Käyttäjän luominen ei onnistu!');
