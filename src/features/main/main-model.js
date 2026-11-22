@@ -22,14 +22,11 @@ async function loadRestaurants() {
  *
  * @returns {Integer} - Is the restaurant comparably closer or further.
  */
-async function sortRestaurants(userLat, userLong) {
-  await fetchRestaurants();
-
+function sortRestaurants(userLat, userLong) {
   // Users cordinates
   const x = userLong;
   const y = userLat;
 
-  // Sorts restaurants
   restaurants.sort((a, b) => {
     let x2 = a.location.coordinates[0];
     let y2 = a.location.coordinates[1];
