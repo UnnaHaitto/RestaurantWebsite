@@ -1,5 +1,12 @@
 import {apiUrl} from '../api/api.js';
 
+/**
+ * Fetches the liked restaurant from the API.
+ *
+ * @param {String} restaurantId - The ID of the liked restaurant.
+ * @param {String} token - The users authentication token.
+ * @returns
+ */
 async function saveRestaurantToLiked(restaurantId, token) {
   //Imports the liked restaurant to the users liked restaurants
 

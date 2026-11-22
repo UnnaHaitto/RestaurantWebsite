@@ -1,15 +1,14 @@
+/**
+ * Fills the heart of the selected restaurant element.
+ *
+ * @param {HTMLElement} button - The clicked button
+ */
 function setButtonHeart(button) {
-  let text = '';
-
   if (button.innerText == '♡') {
-    text = '♥';
-    button.innerText = text;
+    button.innerText = '♥';
   } else {
-    text = '♡';
-    button.innerText = text;
+    button.innerText = '♡';
   }
-
-  return text;
 }
 
 export {setButtonHeart};

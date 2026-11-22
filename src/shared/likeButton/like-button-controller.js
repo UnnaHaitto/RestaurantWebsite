@@ -4,6 +4,9 @@ import {saveRestaurantToLiked} from './like-button-model.js';
 
 const token = sessionStorage.getItem('token');
 
+/**
+ * Sets all the like buttons to not selected.
+ */
 function clearAllLikeButtons() {
   const likeButtons = document.querySelectorAll('.like-button');
 
@@ -12,6 +15,9 @@ function clearAllLikeButtons() {
   });
 }
 
+/**
+ * Initializes like buttons by creating them and attaching event listeners.
+ */
 function initializeLikeButtons() {
   const container = document.querySelector('.restaurant-container');
 
