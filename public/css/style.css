@@ -321,14 +321,6 @@ header {
   position: absolute;
 }
 
-.menu {
-  display: none;
-}
-
-.show-menu {
-  display: block;
-}
-
 #daily-food-items-container {
   padding: 20px;
   border-top: 1px solid #047c58;
@@ -346,15 +338,16 @@ header {
   margin-bottom: 20px;
 }
 
-#day-container a {
+#day-container button {
   text-decoration: none;
   color: #047c58;
   margin-right: 10px;
+  border: none;
   border-right: solid 1px #047c58;
   padding-right: 10px;
 }
 
-#day-container a:last-child {
+#day-container button:last-child {
   border-right: none;
   padding-right: 0;
 }
@@ -677,7 +670,7 @@ header {
     display: none;
   }
 
-  #day-container a {
+  #day-container button {
     border: none;
     font-size: 20px;
   }
@@ -695,7 +688,7 @@ header {
     display: flex;
   }
 
-  #day-container a {
+  #day-container button {
     padding: 0;
     margin: 0;
   }
