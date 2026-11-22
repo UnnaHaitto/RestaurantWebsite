@@ -44,10 +44,6 @@ function displayRestaurant(restaurant) {
   html += '<h2>' + restaurant.name + '</h2>';
   html += '<p>' + restaurant.company + '</p>';
   html += '</div>';
-  html += '<div class="like-button-container">';
-  html += '<p class="like-button" data-value="' + restaurant._id + '">♥</p>';
-
-  html += '</div>';
   html += '</div>';
   html += '<div class="restaurant-info-container">';
   html +=
