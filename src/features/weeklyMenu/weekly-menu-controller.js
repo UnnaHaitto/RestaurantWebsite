@@ -26,7 +26,7 @@ async function createElements() {
       weeklyMenuItems[weekday] = daysCourses;
     }
   } catch (error) {
-    console.log('Virhe menun hakemisessa: ', error);
+    console.log('Failed to fetch weekyl menu: ', error);
   }
 }
 
