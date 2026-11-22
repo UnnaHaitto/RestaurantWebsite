@@ -2,6 +2,23 @@ import {isCreationPossible} from '../../shared/usernameCheck/usernameCheck.js';
 
 import {apiUrl} from '../../shared/api/api.js';
 
+async function fetchRestaurantById(restaurantId) {
+  try {
+    const response = await fetch(apiUrl + '/restaurants/' + restaurantId);
+
+    if (!response.ok) {
+      throw new Error('Unable to fetch restaurant!');
+    }
+
+    const restaurant = await response.json();
+
+    return restaurant;
+  } catch (error) {
+    console.log(error.message);
+    throw error;
+  }
+}
+
 /**
  * Fetches the current logged in user's data.
  *
@@ -24,6 +41,11 @@ async function fetchUserData(token) {
   }
 
   const userData = await response.json();
+
+  sessionStorage.setItem(
+    'liked-restaurant',
+    userData.favouriteRestaurant || ''
+  );
 
   return userData;
 }
@@ -109,4 +131,4 @@ async function updateUserInfo(updateData, token) {
   }
 }
 
-export {fetchUserData, saveImage, updateUserInfo};
+export {fetchRestaurantById, fetchUserData, saveImage, updateUserInfo};
