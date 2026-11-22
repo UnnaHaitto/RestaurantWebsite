@@ -1,6 +1,8 @@
 const pagination = document.querySelector('.pagination');
 const container = document.querySelector('.restaurant-container');
 
+const token = sessionStorage.getItem('token');
+
 /**
  * Displays restaurants on the page.
  *
@@ -21,9 +23,13 @@ function displayRestaurants(restaurants) {
     html += '<h2>' + restaurant.name + '</h2>';
     html += '<p>' + restaurant.company + '</p>';
     html += '</div>';
-    html += '<div class="like-button-container">';
-    html += '<p class="like-button">♡</p>';
-    html += '</div>';
+    if (token) {
+      html += '<div class="like-button-container">';
+      html +=
+        '<p class="like-button" data-value="' + restaurant._id + '">♡</p>';
+
+      html += '</div>';
+    }
     html += '</div>';
     html += '<div class="restaurant-info-container">';
     html +=
