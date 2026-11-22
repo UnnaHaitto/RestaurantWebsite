@@ -50,7 +50,7 @@ elements.username.addEventListener('input', () => {
  * Validates the password input when the user types.
  */
 elements.password.addEventListener('input', () => {
-  const error = validateUsername(elements.password.value, false);
+  const error = validatePassword(elements.password.value, false);
 
   displayValidationError('passwordError', error);
 });
@@ -59,7 +59,7 @@ elements.password.addEventListener('input', () => {
  * Validates the email input when the user types.
  */
 elements.email.addEventListener('input', () => {
-  const error = validateUsername(elements.email.value, false);
+  const error = validateEmail(elements.email.value, false);
 
   displayValidationError('emailError', error);
 });
