@@ -22,7 +22,7 @@ function displayRestaurants(restaurants) {
     html += '<div class="restaurants">';
     html += '<div class="food-image-container">';
     html +=
-      '<img src="/../../public/images/restaurant.jpeg" alt="Kuva ravintolasta" />';
+      '<img src="../../../public/images/restaurant.jpeg" alt="Kuva ravintolasta" />';
     html += '</div>';
     html += '<div class="container">';
     html += '<div class="restaurant-info">';
