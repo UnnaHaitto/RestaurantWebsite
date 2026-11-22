@@ -24,7 +24,8 @@ function handleLogin() {
 
     if (success) {
       clearError();
-      location.href = '../../../../public/userPage.html';
+      location.href =
+        '../../../../finishedRestaurantWebsite/RestaurantWebsite/public/userPage.html';
     } else {
       showError('Kirjautuminen epäonnistui');
     }
