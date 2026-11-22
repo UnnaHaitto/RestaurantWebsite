@@ -22,6 +22,8 @@ function initializeLikeButtons() {
 
     const restaurantId = button.dataset.value;
 
+    sessionStorage.setItem('liked-restaurant', restaurantId);
+
     clearAllLikeButtons();
 
     setButtonHeart(button);
