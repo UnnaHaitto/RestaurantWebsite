@@ -1,5 +1,8 @@
 const token = sessionStorage.getItem('token');
 
+/**
+ * Creates the HTML for the header and displays it on the page.
+ */
 function createHeader() {
   let html = '';
 
