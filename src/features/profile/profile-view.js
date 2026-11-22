@@ -22,8 +22,6 @@ const elements = {
   logoutButton: document.getElementById('logout-link'),
 };
 
-// add functionality when the restaurant is unliked
-
 function displayRestaurant(restaurant) {
   const container = document.getElementById('user-favourite-food-container');
 
