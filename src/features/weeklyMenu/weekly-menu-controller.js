@@ -10,13 +10,17 @@ import {
   attachListenersToNav,
 } from './weekly-menu-view.js';
 
+// Get restaurant information from the URL parameters.
 const parameters = location.search.split('&');
-
 const restaurantId = parameters[0].split('=')[1];
 const restaurantName = decodeURIComponent(parameters[1].split('=')[1]);
 
+// Stores the weekly menu courses, organized by weekday.
 const weeklyMenuItems = {};
 
+/**
+ * Fetches the weekly menu for the selected restaurant and organizes the items by weekday.
+ */
 async function createElements() {
   try {
     const weeklyMenu = await getWeeklyMenu(restaurantId);
@@ -32,6 +36,14 @@ async function createElements() {
   }
 }
 
+/**
+ * Handles clicks on the day navigation buttons.
+ *
+ * Attaches the necessary event listeners and displays the menu for the selected day.
+ *
+ * @param {String} day - The selected weekday.
+ * @param {HTMLElement} button - The clicked navigation button.
+ */
 function handleDayClick(day, button) {
   const handleMenuCreation = (selectedDay) => {
     createMenu(selectedDay, weeklyMenuItems);
@@ -40,10 +52,16 @@ function handleDayClick(day, button) {
   attachListenersToNav(day, button, handleMenuCreation);
 }
 
+/**
+ * Displays monday's menu as the default menu.
+ */
 function createDefaultMenu() {
   createMenu('maanantai', weeklyMenuItems);
 }
 
+/**
+ * Determines the month from the fetched weekly menu and updates the month displayed on the page.
+ */
 function displayMonth() {
   let apiMonth = '';
 
@@ -56,6 +74,9 @@ function displayMonth() {
   setMonth(month);
 }
 
+/**
+ * Initializes the weekly menu page.
+ */
 async function initializeWeeklyMenu() {
   createHeader();
 
