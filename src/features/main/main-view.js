@@ -3,6 +3,8 @@ const container = document.querySelector('.restaurant-container');
 
 const token = sessionStorage.getItem('token');
 
+const likedRestaurant = sessionStorage.getItem('liked-restaurant');
+
 /**
  * Displays restaurants on the page.
  *
@@ -26,7 +28,11 @@ function displayRestaurants(restaurants) {
     if (token) {
       html += '<div class="like-button-container">';
       html +=
-        '<p class="like-button" data-value="' + restaurant._id + '">♡</p>';
+        '<p class="like-button" data-value="' +
+        restaurant._id +
+        '">' +
+        (likedRestaurant === restaurant._id ? '♥' : '♡') +
+        '</p>';
 
       html += '</div>';
     }
