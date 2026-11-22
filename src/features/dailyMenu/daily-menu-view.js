@@ -25,6 +25,8 @@ const displayDailyMenu = (dailyMenu) => {
   }
 
   for (let i = 0; i < dailyMenu.courses.length; i++) {
+    const diets = dailyMenu.courses[i].diets;
+
     html +=
       '<div id="daily-food-items-container" class="food-items-container">';
     html += '<div class="food-container">';
@@ -32,11 +34,9 @@ const displayDailyMenu = (dailyMenu) => {
     html += '<p class="food-name">' + dailyMenu.courses[i].name + '</p>';
     html += '<p class="food-price">' + dailyMenu.courses[i].price + '</p>';
     html += '</div>';
-    html += '<p class="allergen-info">';
-    for (let restriction of dailyMenu.courses[i].diets) {
-      html += restriction + ' ';
+    if (diets) {
+      html += '<p class="allergen-info">' + diets + '</p>';
     }
-    html += '</p>';
     html += '</div>';
     html += '</div>';
   }
