@@ -1,9 +1,19 @@
+/**
+ * Updates the restaurant name and displays it on the page.
+ *
+ * @param {String} name - The name of the restaurant.
+ */
 function setRestaurantName(name) {
   const h1Container = document.querySelector('.restaurant-name');
 
   h1Container.innerText = name;
 }
 
+/**
+ * Displays the menu month on the page.
+ *
+ * @param {String} month - The month to display.
+ */
 function setMonth(month) {
   const monthContainer = document.querySelector('.month');
 
@@ -12,6 +22,12 @@ function setMonth(month) {
     : (monthContainer.innerHTML = '<h1>Ei voitu hakea kuukautta</h1>');
 }
 
+/**
+ * Creates navigation buttons for each weekday and attaches click event listeners to them.
+ *
+ * @param {Object} weeklyMenuItems - The weekly menu organized by weekday.
+ * @param {Function} onDayClick - Callback executed when a weekday is pressed.
+ */
 function createDayNavigation(weeklyMenuItems, onDayClick) {
   const dayContainer = document.querySelector('#day-container');
 
@@ -40,6 +56,13 @@ function createDayNavigation(weeklyMenuItems, onDayClick) {
   }
 }
 
+/**
+ * Creates and displays the menu for the selected weekday.
+ *
+ * @param {Stirng} day - The selected weekday.
+ * @param {Object} weeklyMenuItems - The weekly menu organized by weekday.
+ * @returns
+ */
 function createMenu(day, weeklyMenuItems) {
   let foodItemCotainer = document.querySelector('.food-items-container');
 
@@ -69,6 +92,13 @@ function createMenu(day, weeklyMenuItems) {
   foodItemCotainer.innerHTML = htmlMenu;
 }
 
+/**
+ * Updates the active state of the weekday navigation buttons and calls the callback for the selected day.
+ *
+ * @param {String} day - The selected weekday.
+ * @param {HTMLElement} button - The clicked navigation button.
+ * @param {Function} onDayClick - Callback executed for the selected day.
+ */
 function attachListenersToNav(day, button, onDayClick) {
   const allDayButtons = document.querySelectorAll('.day-button');
 
