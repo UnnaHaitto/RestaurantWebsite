@@ -34,9 +34,7 @@ function handleInput(field, value) {
   const error = validators[field](value);
 
   showValidationErrors({
-    username: field === 'username' ? error : '',
-    password: field === 'password' ? error : '',
-    email: field === 'email' ? error : '',
+    [field]: error,
   });
 }
 
