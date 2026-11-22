@@ -13,6 +13,10 @@ const likedRestaurant = sessionStorage.getItem('liked-restaurant');
 function displayRestaurants(restaurants) {
   let html = '';
 
+  if (!restaurants) {
+    container.innerHTML = '<h1>Ei voitu hakea ravintoloita</h1>';
+  }
+
   // Goes through each restaurant on the current page
   for (let restaurant of restaurants) {
     html += '<div class="restaurants">';
