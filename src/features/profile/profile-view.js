@@ -23,7 +23,7 @@ const elements = {
 };
 
 /**
- * Dsiplays the user's profile information on the page.
+ * Displays the user's profile information on the page.
  *
  * @param {Object} userData - The user's profile information.
  */
