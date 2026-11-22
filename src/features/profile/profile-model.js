@@ -2,6 +2,12 @@ import {isCreationPossible} from '../../shared/usernameCheck/usernameCheck.js';
 
 import {apiUrl} from '../../shared/api/api.js';
 
+/**
+ * Fetches the favourite restaurant from API.
+ *
+ * @param {String} restaurantId - The favourite restaurants id.
+ * @returns {Promise<Object>} - The restaurant's data.
+ */
 async function fetchRestaurantById(restaurantId) {
   try {
     const response = await fetch(apiUrl + '/restaurants/' + restaurantId);

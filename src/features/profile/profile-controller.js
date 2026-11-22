@@ -30,6 +30,9 @@ import {createHeader} from '../../shared/headerController/header-controller.js';
 // Get the user's authentication token.
 const token = sessionStorage.getItem('token');
 
+/**
+ * Fetches favourite restaurant and displays it on the page.
+ */
 async function addFavouriteRestaurantToPage() {
   try {
     const favouriteRestaurant = sessionStorage.getItem('liked-restaurant');
@@ -185,6 +188,9 @@ function logout() {
   window.location.href = '../../../public/main.html';
 }
 
+/**
+ * Initializes the user profile page.
+ */
 async function profileController() {
   createHeader();
 

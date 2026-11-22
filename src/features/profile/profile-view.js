@@ -22,6 +22,11 @@ const elements = {
   logoutButton: document.getElementById('logout-link'),
 };
 
+/**
+ * Displays the favourite restaurant on the page.
+ *
+ * @param {Object} restaurant - The favourite restaurant object.
+ */
 function displayRestaurant(restaurant) {
   const container = document.getElementById('user-favourite-food-container');
 
