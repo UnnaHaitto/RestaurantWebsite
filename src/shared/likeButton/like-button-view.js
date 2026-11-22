@@ -1,19 +1,15 @@
 function setButtonHeart(button) {
+  let text = '';
+
   if (button.innerText == '♡') {
-    button.innerText = '♥';
+    text = '♥';
+    button.innerText = text;
   } else {
-    button.innerText = '♡';
+    text = '♡';
+    button.innerText = text;
   }
+
+  return text;
 }
 
-function attachLikeButtonListeners(likeButtons, handler) {
-  likeButtons.forEach(function (button) {
-    button.addEventListener('click', handler);
-  });
-}
-
-function createLikeButton() {
-  return '<p class="like-button">♡</p>';
-}
-
-export {setButtonHeart, attachLikeButtonListeners, createLikeButton};
+export {setButtonHeart};
