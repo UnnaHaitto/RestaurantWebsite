@@ -22,6 +22,57 @@ const elements = {
   logoutButton: document.getElementById('logout-link'),
 };
 
+// add functionality when the restaurant is unliked
+
+function displayRestaurant(restaurant) {
+  const container = document.getElementById('user-favourite-food-container');
+
+  let html = '';
+
+  if (!restaurant) {
+    container.innerHTML = '<h1>Ei lempi ravintolaa.</h1>';
+    return;
+  }
+
+  html += '<div class="restaurants">';
+  html += '<div class="food-image-container">';
+  html +=
+    '<img src="../../../public/images/restaurant.jpeg" alt="Kuva ravintolasta" />';
+  html += '</div>';
+  html += '<div class="container">';
+  html += '<div class="restaurant-info">';
+  html += '<h2>' + restaurant.name + '</h2>';
+  html += '<p>' + restaurant.company + '</p>';
+  html += '</div>';
+  html += '<div class="like-button-container">';
+  html += '<p class="like-button" data-value="' + restaurant._id + '">♥</p>';
+
+  html += '</div>';
+  html += '</div>';
+  html += '<div class="restaurant-info-container">';
+  html +=
+    '<p>Osoite: ' + restaurant.city + ', ' + restaurant.postalCode + '</p>';
+  html += '<p>Puhelinnumero: ' + restaurant.phone + '</p>';
+  html += '</div>';
+  html += '<div class="restaurant-menu-container">';
+  html +=
+    '<a href="" class="daily-menu" data-value="' +
+    restaurant._id +
+    '" data-name="' +
+    restaurant.name +
+    '">Päivän menu</a>';
+  html +=
+    '<a href="" class="weekly-menu" data-value="' +
+    restaurant._id +
+    '" data-name="' +
+    restaurant.name +
+    '">Viikon menu</a>';
+  html += '</div>';
+  html += '</div>';
+
+  container.innerHTML = html;
+}
+
 /**
  * Displays the user's profile information on the page.
  *
@@ -108,8 +159,32 @@ function clearError() {
   elements.errorContainer.innerText = '';
 }
 
+/**
+ * Listenes for daily and weekly menu clicks.
+ *
+ * @param {Function} handler - Callback function receiving the menu type, value and name.
+ */
+function bindMenuEvents(handler) {
+  const container = document.querySelector('#user-favourite-food-container');
+
+  container.addEventListener('click', function (event) {
+    const link = event.target.closest('.daily-menu, .weekly-menu');
+
+    if (!link) return;
+
+    event.preventDefault();
+
+    handler(
+      link.classList.contains('daily-menu') ? 'daily' : 'weekly',
+      link.dataset.value,
+      link.dataset.name
+    );
+  });
+}
+
 export {
   elements,
+  displayRestaurant,
   displayUserData,
   displayError,
   displayImageMessage,
@@ -118,4 +193,5 @@ export {
   getUserInput,
   clearUserInput,
   clearError,
+  bindMenuEvents,
 };
