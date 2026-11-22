@@ -12,6 +12,8 @@ import {
   bindMenuEvents,
 } from './main-view.js';
 
+import {createHeader} from '../../shared/headerController/header-controller.js';
+
 // What page the user is on.
 let currentPage = 1;
 
@@ -90,6 +92,8 @@ async function handleLocationError(error) {
 }
 
 function initRestaurantController() {
+  createHeader();
+
   bindPaginationEvents(handlePagination);
   bindMenuEvents(handleMenuNavigation);
 

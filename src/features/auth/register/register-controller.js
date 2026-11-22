@@ -16,6 +16,8 @@ import {
   bindRegisterSubmit,
 } from './register-view.js';
 
+import {createHeader} from '../../../shared/headerController/header-controller.js';
+
 /**
  * Handles validation when the user types.
  *
@@ -96,6 +98,8 @@ async function handleRegister(event) {
  * Initializes registration functionality.
  */
 function initRegisterController() {
+  createHeader();
+
   bindInputEvents(handleInput);
   bindRegisterSubmit(handleRegister);
 }

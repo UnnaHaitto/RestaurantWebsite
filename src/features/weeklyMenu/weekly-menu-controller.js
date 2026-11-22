@@ -1,3 +1,5 @@
+import {createHeader} from '../../shared/headerController/header-controller.js';
+
 import {getWeeklyMenu, getMonth} from './weekly-menu-model.js';
 
 import {
@@ -55,6 +57,8 @@ function displayMonth() {
 }
 
 async function initializeWeeklyMenu() {
+  createHeader();
+
   await createElements();
 
   createDayNavigation(weeklyMenuItems, handleDayClick);

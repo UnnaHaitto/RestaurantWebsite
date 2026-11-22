@@ -18,6 +18,8 @@ import {
   clearUserInput,
 } from './profile-view.js';
 
+import {createHeader} from '../../shared/headerController/header-controller.js';
+
 // Get the user's authentication token.
 const token = sessionStorage.getItem('token');
 
@@ -144,6 +146,8 @@ function logout() {
 }
 
 function profileController() {
+  createHeader();
+
   if (!token) {
     window.location.href = '../../../public/main.html';
     return;

@@ -2,6 +2,8 @@ import {getDailyMenu} from './daily-menu-model.js';
 
 import {displayDailyMenu, displayRestaurantName} from './daily-menu-view.js';
 
+import {createHeader} from '../../shared/headerController/header-controller.js';
+
 /**
  * Creates and displays the daily menu for a restaurant.
  *
@@ -9,6 +11,8 @@ import {displayDailyMenu, displayRestaurantName} from './daily-menu-view.js';
  * @param {String} restaurantName - The name of the selected restaurant.
  */
 const createMenu = async (restaurantId, restaurantName) => {
+  createHeader();
+
   try {
     const dailyMenu = await getDailyMenu(restaurantId);
 

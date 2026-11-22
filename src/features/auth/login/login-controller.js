@@ -7,10 +7,14 @@ import {
 
 import {login} from './login-model.js';
 
+import {createHeader} from '../../../shared/headerController/header-controller.js';
+
 /**
  * Handles the login form submission.
  */
 function handleLogin() {
+  createHeader();
+
   bindLoginSubmit(async function (event) {
     event.preventDefault();
 
