@@ -8,22 +8,17 @@ import {apiUrl} from '../../shared/api/api.js';
  * @returns {Promise<Object>} - the restaurant's weekly menu.
  */
 async function getWeeklyMenu(restaurantId) {
-  try {
-    const response = await fetch(
-      apiUrl + '/restaurants/weekly/' + restaurantId + '/fi'
-    );
+  const response = await fetch(
+    apiUrl + '/restaurants/weekly/' + restaurantId + '/fi'
+  );
 
-    if (!response.ok) {
-      throw new Error('Unable to fetch weekly menu!');
-    }
-
-    const weeklyMenu = await response.json();
-
-    return weeklyMenu;
-  } catch (error) {
-    console.log('Failed to fetch weekly menu: ', error);
-    throw error;
+  if (!response.ok) {
+    throw new Error('Unable to fetch weekly menu!');
   }
+
+  const weeklyMenu = await response.json();
+
+  return weeklyMenu;
 }
 
 /**
