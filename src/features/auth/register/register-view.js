@@ -28,9 +28,17 @@ function getRegisterInput() {
  * @param {Object} errors - The validation errors for the fields.
  */
 function showValidationErrors(errors) {
-  usernameError.innerText = errors.username;
-  passwordError.innerText = errors.password;
-  emailError.innerText = errors.email;
+  if (errors.username !== undefined) {
+    usernameError.innerText = errors.username;
+  }
+
+  if (errors.password !== undefined) {
+    passwordError.innerText = errors.password;
+  }
+
+  if (errors.email !== undefined) {
+    emailError.innerText = errors.email;
+  }
 }
 
 /**
