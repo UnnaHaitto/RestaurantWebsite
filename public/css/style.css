@@ -262,8 +262,12 @@ header {
 
 #user-favourite-food-container {
   display: flex;
+  justify-content: center;
   flex-wrap: wrap;
-  gap: 40px;
+}
+
+#user-favourite-food-container .restaurants {
+  width: 80%;
 }
 
 #user-favourite-foods-container {
@@ -505,6 +509,10 @@ header {
 
   .restaurants {
     margin-top: 20px;
+    width: 100%;
+  }
+
+  #user-favourite-food-container .restaurants {
     width: 100%;
   }
 
