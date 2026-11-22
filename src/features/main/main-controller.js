@@ -14,6 +14,8 @@ import {
 
 import {createHeader} from '../../shared/headerController/header-controller.js';
 
+import {initializeLikeButtons} from '../../shared/likeButton/like-button-controller.js';
+
 // What page the user is on.
 let currentPage = 1;
 
@@ -96,6 +98,8 @@ function initRestaurantController() {
 
   bindPaginationEvents(handlePagination);
   bindMenuEvents(handleMenuNavigation);
+
+  initializeLikeButtons();
 
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(
